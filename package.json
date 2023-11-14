@@ -1,0 +1,12 @@
+{
+  "name": "semesterassigment2",
+  "version": "1.0.0",
+  "description": "Semester assigment 2 at Noroff",
+  "github-repo": "https://github.com/Ninuskaninus/SemesterAssigment2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nina Amdal",
+  "license": "ISC"
+}
