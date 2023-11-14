@@ -1,0 +1,143 @@
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainNav{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    align-items: center;
+    border-bottom: 2px solid $secondary;
+    padding: 20px;
+}
+
+.secodaryNav{
+    display: none;
+}
+
+.headLogo{
+    margin-right: 10px;
+}
+
+.secondaryNavContainer{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    min-width: 100%;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $secondary;
+}
+
+.secondaryNavContainer p{
+    margin: 0;
+    margin-right: 20px;
+}
+
+.secondaryNavContainer b{
+    color: $secondary;
+}
+
+.divider{
+    margin: 0;
+    margin-right: 20px;
+    background-color: $secondary;
+    font-weight: 700;
+    width: 2px;
+    min-height: 20px;
+}
+
+.navUsernameContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-container-hamburger{
+    height: 41px;
+    width: 41px;
+    display: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.nav-container-hamburger.nav-container-hamburger span{
+    height: 3px;
+    width: 100%;
+    background-color: $secondary;
+    margin: 10px 0;
+    display: block;
+    border-radius: 25px;
+}
+
+.nav-container-burger-content{
+    width: 100%;
+    height: 0px;
+    background-color: $primary;
+    padding: 20px;
+    transition: 0.5s;
+    display: none;
+}
+
+.nav-container-burger-content ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: right;
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.nav-container-burger-content li{
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+    color: $white;
+
+    &:hover{
+        background-color: $secondary;
+        transition: 0.5s;
+    }
+}
+
+
+
+.nav-container-burger-content a{
+    color: $white;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+
+@media screen and (max-width: 670px){
+    .nav-container-right{
+        display: none;
+    }
+
+    .nav-container-left button{
+        display: none;
+    }
+
+    .nav-container-hamburger{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 259px) {
+    .mainNav img{
+        display: none;
+    }
+}
