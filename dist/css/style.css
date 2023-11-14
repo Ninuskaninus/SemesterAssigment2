@@ -11956,6 +11956,10 @@ main {
   align-items: center;
   text-align: center;
 }
+.tags-card:hover {
+  background-color: #495057;
+  cursor: pointer;
+}
 
 .tags-card h3, .tags-card .h3 {
   margin-top: 20px;
@@ -12057,6 +12061,13 @@ main {
 .item-btn a {
   text-decoration: none;
   color: #fff;
+}
+
+footer {
+  width: 100%;
+  margin-top: 150px;
+  border-top: 1px solid #6B65AD;
+  height: 150px;
 }
 
 nav {
