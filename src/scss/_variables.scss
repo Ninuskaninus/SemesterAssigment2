@@ -6,3 +6,56 @@ $purple:  #6B65AD ;
 $red:     #F04D23 ;
 $green:   #509041 ;
 $pink:    #ADACD2 ;
+
+$primary:       $black;
+$secondary:     $purple;
+$success:       $green;
+$info:          $blue;
+$danger:        $red;
+$light:         $pink;
+
+$font-family-sans-serif:      "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+h1{
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+h2{
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+h3{
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h4{
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+p{
+    color: $white;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.p-green{
+    color: $green;
+}
+
+.p-red{
+    color: $red;
+}
