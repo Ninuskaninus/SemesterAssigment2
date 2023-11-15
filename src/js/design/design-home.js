@@ -9,7 +9,6 @@ import { errorLoginModal } from "./errorLoginModal.js";
 export function htmlDesign() {
   secondaryNavbar();
   mainNavbar();
-
   heroBanner();
   popularTags();
   searchField();

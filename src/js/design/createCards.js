@@ -58,7 +58,7 @@ export function createCards(recentUploadsCard) {
 
     const cardInfoLink = document.createElement("a");
     cardInfoLink.innerHTML = "Read more";
-    cardInfoLink.href = "#";
+    cardInfoLink.href = "preview/index.html?id=" + listing.id;
     cardButtons.appendChild(cardInfoLink);
 
     const cardBidLink = document.createElement("a");
@@ -67,9 +67,9 @@ export function createCards(recentUploadsCard) {
     cardBidLink.classList.add("secondaryBtn");
     cardBidLink.addEventListener("click", () => {
       if (!accessToken) {
-        console.log("Bid on this");
-      } else {
         errorLogin();
+      } else {
+        console.log("Bid on this");
       }
     });
 

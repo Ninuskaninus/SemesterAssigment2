@@ -11,40 +11,36 @@
     <nav class="secodaryNav" id="secondaryNav"></nav>
     <nav class="mainNav container" id="mainNav"></nav>
     <div class="nav-container-burger-content" id="hamburgerContent"></div>
-    <main class="previewMain container" id="previewMain">
+    <main class="previewMain container" id="indexMain">
       <div class="preview-container container">
-        <div class="previewImg selected"></div>
-        <div class="galleryContainer">
-            <div class="previewImg"></div>
-            <div class="previewImg"></div>
-            <div class="previewImg"></div>
+        <div class="gallery-track" id="previewImageMain">
         </div>
       </div>
       <div class="info-container container row">
+        <div class="seller-info">
+            <div class="seller-avatar" id="sellerAvatar"></div>
+            <div class="seller-info-content">
+                <h4 id="sellerName"></h4>
+                <p id="sellerEmail"></p>
+            </div>
+        </div>
         <div class="product-info col-sm">
-            <p>Deadline:</p>
-            <h1>This is title</h1>
+            <p>Deadline: <span id="deadline"></span></p>
+            <h1 id="title"></h1>
             <div class="product-description">
-                <p>teksttekst tekst tekst tekst</p>
+                <p id="description"></p>
             </div>
         </div>
         <div class="product-bid col-sm">
             <div class="price-info">
-                <p>Current credit:</p>
-                <h4>14500</h4>
+                <p>Current price:</p>
+                <h3 id="credit"></h3>
             </div>
-            <button class="bidBtn">
+            <button class="bidBtn" id="bidOnThis">
                 <img src="/src/assets/gavel.png" alt="">
                 Bid on this!
             </button>
-            <div class="latest-bids">
-                <h5>Latest bids</h5>
-                <div class="whiteDivider"></div>
-                <div class="bid">
-                    <p>Username</p>
-                    <p>14500</p>
-                </div>
-            </div>
+            <div class="latest-bids" id="bidlist"></div>
         </div>
       </div>
       <div class="related-container container">
@@ -77,6 +73,6 @@
     </main>
     <footer></footer>
 
-    <script type="module" src="/src/js/index.js"></script>
+    <script type="module" src="/src/js/design/design-preview.js"></script>
   </body>
 </html>
