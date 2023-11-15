@@ -12321,6 +12321,23 @@ nav {
   padding: 5px 20px;
 }
 
+.theredetaryBtn {
+  background-color: #237B8B;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+  margin-right: 10px;
+}
+
+.bidBtn {
+  background-color: #509041;
+  color: #fff;
+  width: 80%;
+  height: 50px;
+  border-radius: 41px;
+}
+
 .fullscreenModal {
   position: fixed;
   top: 85px;
@@ -12405,9 +12422,110 @@ nav {
   margin: 0;
 }
 
-/* *{
-    border: dotted red 1px;
+.previewMain {
+  display: flex;
+  flex-direction: column;
+  max-width: 950px;
 }
- */
+
+.preview-container {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.galleryContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 5px;
+  height: 200px;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.related-content {
+  gap: 10px;
+}
+
+.related-img {
+  width: 100%;
+  height: 200px;
+  background-color: aqua;
+  border-radius: 41px 41px 0 0;
+  margin-bottom: 20px;
+}
+
+.related-info h4, .related-info .h4 {
+  margin-bottom: 30px;
+}
+
+.related-card {
+  background-color: #343434;
+  color: #fff;
+  border-radius: 41px;
+}
+
+.related-info {
+  min-height: 150px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-container {
+  margin-top: 200px;
+}
+
+.related-container h2, .related-container .h2 {
+  margin-bottom: 20px;
+}
+
+.product-bid {
+  border-radius: 41px;
+  background: #343434;
+  box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+}
+
+.price-info p {
+  margin-bottom: 0;
+}
+
+.price-info h4, .price-info .h4 {
+  color: #509041;
+  margin-bottom: 20px;
+}
+
+.latest-bids {
+  margin-top: 20px;
+}
+
+.whiteDivider {
+  background-color: #fff;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 10px;
+}
+
+.bid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #fff;
+}
 
 /*# sourceMappingURL=style.css.map */

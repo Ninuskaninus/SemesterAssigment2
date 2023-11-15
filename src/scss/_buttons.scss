@@ -1,47 +1,62 @@
-.mainBtn{
-    background-color: $secondary;
-    color: $white;
-    padding: 10px;
-    min-width: 137px;
-    outline: none;
-    border: none;
+.mainBtn {
+  background-color: $secondary;
+  color: $white;
+  padding: 10px;
+  min-width: 137px;
+  outline: none;
+  border: none;
 
-    & img{
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-    }
-
-    &:hover{
-        box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
-        color: $white;
-        background-color: $gray-600;
-        transition: 0.5s;
-    }
-}
-
-.mainBtnWhite{
-    background-color: transparent;
-    color: $white;
-    border: 3px solid $white;
-    width: 137px;
-    height: 41px;
+  & img {
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
+  }
 
-    &:hover{
-        box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
-        color: $white;
-        transition: 0.5s;
-        border: 3px solid $secondary;
-        color: $secondary;
-    }
-}
-
-.secondaryBtn{
-    background-color: $secondary;
+  &:hover {
+    box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
     color: $white;
-    border: none;
-    border-radius: 18px;
-    padding: 5px 20px;
+    background-color: $gray-600;
+    transition: 0.5s;
+  }
 }
 
+.mainBtnWhite {
+  background-color: transparent;
+  color: $white;
+  border: 3px solid $white;
+  width: 137px;
+  height: 41px;
+  margin-right: 10px;
+
+  &:hover {
+    box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
+    color: $white;
+    transition: 0.5s;
+    border: 3px solid $secondary;
+    color: $secondary;
+  }
+}
+
+.secondaryBtn {
+  background-color: $secondary;
+  color: $white;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
+
+.theredetaryBtn {
+  background-color: $blue;
+  color: $white;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+  margin-right: 10px;
+}
+.bidBtn {
+  background-color: $green;
+  color: $white;
+  width: 80%;
+  height: 50px;
+  border-radius: 41px;
+}
