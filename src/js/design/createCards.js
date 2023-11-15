@@ -1,11 +1,15 @@
 import { getListings } from "../API/GET/getListings.js";
+import { errorLogin } from "../modals/errorLogin.js";
+
+const accessToken = localStorage.getItem("accessToken");
+
 const listings = await getListings();
-console.log(listings);
 
 export function createCards(recentUploadsCard) {
   listings.forEach((listing) => {
     const card = document.createElement("div");
     card.classList.add("item-card");
+    card.id = listing.id;
     recentUploadsCard.appendChild(card);
 
     const cardImage = document.createElement("div");
@@ -27,9 +31,13 @@ export function createCards(recentUploadsCard) {
     }
     card.appendChild(cardImage);
 
+    const cardContentContainer = document.createElement("div");
+    cardContentContainer.classList.add("item-content-container");
+    card.appendChild(cardContentContainer);
+
     const cardContent = document.createElement("div");
     cardContent.classList.add("item-info");
-    card.appendChild(cardContent);
+    cardContentContainer.appendChild(cardContent);
 
     const cardDeadline = document.createElement("p");
     cardDeadline.innerHTML = "Deadline: " + listing.endsAt;
@@ -46,7 +54,7 @@ export function createCards(recentUploadsCard) {
 
     const cardButtons = document.createElement("div");
     cardButtons.classList.add("item-btn");
-    card.appendChild(cardButtons);
+    cardContentContainer.appendChild(cardButtons);
 
     const cardInfoLink = document.createElement("a");
     cardInfoLink.innerHTML = "Read more";
@@ -57,6 +65,32 @@ export function createCards(recentUploadsCard) {
     cardBidLink.innerHTML = "Bid on this";
     cardBidLink.href = "#";
     cardBidLink.classList.add("secondaryBtn");
+    cardBidLink.addEventListener("click", () => {
+      if (!accessToken) {
+        console.log("Bid on this");
+      } else {
+        errorLogin();
+      }
+    });
+
     cardButtons.appendChild(cardBidLink);
+
+    function updateCardLayout() {
+      const windowWidth = window.innerWidth;
+      if (windowWidth < 1024) {
+        card.classList.add("item-card-mobile");
+        cardImage.classList.add("item-img-mobile");
+        cardContent.classList.add("item-info-mobile");
+        cardButtons.classList.add("item-btn-mobile");
+      } else {
+        card.classList.remove("item-card-mobile");
+        cardImage.classList.remove("item-img-mobile");
+        cardContent.classList.remove("item-info-mobile");
+        cardButtons.classList.remove("item-btn-mobile");
+      }
+    }
+
+    updateCardLayout();
+    window.addEventListener("resize", updateCardLayout);
   });
 }
