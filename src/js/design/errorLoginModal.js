@@ -1,11 +1,20 @@
 import { login } from "../API/POST/login.js";
 import { secondaryNavbar } from "./secondary-navbar.js";
+import { createUserModal } from "./createUserModal.js";
+
+const accessToken = localStorage.getItem("token");
 
 export function errorLoginModal() {
   const mainContainer = document.getElementById("indexMain");
 
   const fullScreenModal = document.createElement("div");
   fullScreenModal.classList.add("fullscreenModal");
+  fullScreenModal.id = "fullscreenModalLogin";
+  if (accessToken) {
+    fullScreenModal.style.top = "130px";
+  } else {
+    fullScreenModal.style.top = "85px";
+  }
   fullScreenModal.id = "errorLoginModal";
   mainContainer.appendChild(fullScreenModal);
 
@@ -22,6 +31,7 @@ export function errorLoginModal() {
 
   const fullscreenForm = document.createElement("form");
   fullscreenForm.classList.add("fullscreenForm");
+  fullscreenForm.id = "loginForm";
   modal.appendChild(fullscreenForm);
 
   const logo = document.createElement("img");
@@ -29,6 +39,7 @@ export function errorLoginModal() {
   fullscreenForm.appendChild(logo);
 
   const errorText = document.createElement("h2");
+  errorText.id = "loginErrorText";
   errorText.innerText = "You have to be logged in to make a bid";
   fullscreenForm.appendChild(errorText);
 
@@ -80,6 +91,9 @@ export function errorLoginModal() {
   loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     login();
+    setInterval(() => {
+      window.location.reload();
+    }, 1000);
   });
 
   const dividerBtn = document.createElement("p");
@@ -90,5 +104,8 @@ export function errorLoginModal() {
   registerBtn.type = "button";
   registerBtn.innerText = "Register";
   registerBtn.classList.add("btn", "mainBtnWhite");
+  registerBtn.addEventListener("click", () => {
+    createUserModal();
+  });
   loginBtnContainer.appendChild(registerBtn);
 }
