@@ -7,7 +7,7 @@ export function popularTags() {
   popularTags.classList.add("popularTags");
   mainContainer.appendChild(popularTags);
 
-  const popularTagsH2 = document.createElement("h2");
+  const popularTagsH2 = document.createElement("h3");
   popularTagsH2.textContent = "Popular Tags";
   popularTags.appendChild(popularTagsH2);
 
@@ -25,8 +25,9 @@ export function popularTags() {
     tagsImg.alt = tag.name;
     tagsCard.appendChild(tagsImg);
 
-    const tagsName = document.createElement("h3");
+    const tagsName = document.createElement("h6");
     tagsName.textContent = tag.name;
+    tagsName.classList.add("tags-name");
     tagsCard.appendChild(tagsName);
   });
 }
