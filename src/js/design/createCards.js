@@ -1,7 +1,7 @@
 import { getListings } from "../API/GET/getListings.js";
 import { errorLogin } from "../modals/errorLogin.js";
 
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("token");
 
 async function createCards(recentUploadsCard) {
   const listings = await getListings();
@@ -93,10 +93,10 @@ async function createCards(recentUploadsCard) {
       cardBidLink.href = "#";
       cardBidLink.classList.add("secondaryBtn");
       cardBidLink.addEventListener("click", () => {
-        if (!accessToken) {
-          errorLogin();
-        } else {
+        if (accessToken) {
           console.log("Bid on this");
+        } else {
+          errorLogin();
         }
       });
 

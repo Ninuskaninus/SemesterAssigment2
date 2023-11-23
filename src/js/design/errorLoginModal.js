@@ -1,33 +1,28 @@
 import { login } from "../API/POST/login.js";
 import { secondaryNavbar } from "./secondary-navbar.js";
-import { createUserModal } from "./createUserModal.js";
+import { createUser } from "../modals/createUser.js";
 
 const accessToken = localStorage.getItem("token");
 
 export function errorLoginModal() {
-  const mainContainer = document.getElementById("indexMain");
+  const mainContainer = document.getElementById("loginModal");
 
   const fullScreenModal = document.createElement("div");
   fullScreenModal.classList.add("fullscreenModal");
-  fullScreenModal.id = "fullscreenModalLogin";
-  if (accessToken) {
-    fullScreenModal.style.top = "130px";
-  } else {
-    fullScreenModal.style.top = "85px";
-  }
-  fullScreenModal.id = "errorLoginModal";
+  fullScreenModal.style.top = "85px";
   mainContainer.appendChild(fullScreenModal);
 
-  const xout = document.createElement("div");
+  const xout = document.createElement("p");
   xout.classList.add("x-out");
-  fullScreenModal.appendChild(xout);
+  xout.innerText = "Close";
+  mainContainer.appendChild(xout);
   xout.addEventListener("click", () => {
-    fullScreenModal.style.display = "none";
+    mainContainer.remove();
   });
 
   const modal = document.createElement("div");
   modal.classList.add("fullscreenModalContent");
-  fullScreenModal.appendChild(modal);
+  mainContainer.appendChild(modal);
 
   const fullscreenForm = document.createElement("form");
   fullscreenForm.classList.add("fullscreenForm");
@@ -105,7 +100,9 @@ export function errorLoginModal() {
   registerBtn.innerText = "Register";
   registerBtn.classList.add("btn", "mainBtnWhite");
   registerBtn.addEventListener("click", () => {
-    createUserModal();
+    mainContainer.remove();
+    createUser();
+
   });
   loginBtnContainer.appendChild(registerBtn);
 }

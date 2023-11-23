@@ -1,6 +1,4 @@
 export function errorLogin() {
-  const errorLoginModal = document.getElementById("errorLoginModal");
-  console.log(errorLoginModal);
+  const errorLoginModal = document.getElementById("loginModal");
   errorLoginModal.style.display = "flex";
-  console.log(errorLoginModal);
 }

@@ -5,6 +5,7 @@ import { popularTags } from "./popular-tags.js";
 import { searchField } from "./searchfield.js";
 import { recentUploads } from "./recent-uploads.js";
 import { errorLoginModal } from "./errorLoginModal.js";
+import { createUserModal } from "./createUserModal.js";
 
 export function htmlDesign() {
   secondaryNavbar();
@@ -14,4 +15,5 @@ export function htmlDesign() {
   searchField();
   recentUploads();
   errorLoginModal();
+  createUserModal();
 }

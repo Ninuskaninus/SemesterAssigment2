@@ -12389,7 +12389,7 @@ nav {
   z-index: 1000;
   display: none;
   justify-content: center;
-  align-items: center;
+  align-items: top;
 }
 
 .x-out {
@@ -12398,27 +12398,29 @@ nav {
   right: 50px;
   padding: 10px;
   cursor: pointer;
-  background-color: #fff;
 }
 
 .fullscreenModalContent {
   border: 3px solid #6b65ae;
   background: #1a1a1a;
   width: 70%;
-  height: auto;
-  min-height: 50vh;
+  max-width: 650px;
+  height: fit-content;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  margin-top: 100px;
   padding-top: 90px;
+  padding-bottom: 90px;
 }
 .fullscreenModalContent img {
   margin-bottom: 30px;
 }
 .fullscreenModalContent h2, .fullscreenModalContent .h2 {
   margin-bottom: 50px;
-  max-width: 50%;
+  max-width: 90%;
   text-align: center;
 }
 
@@ -12439,7 +12441,8 @@ nav {
   margin-bottom: 30px;
 }
 .fullscreenInputContainer .form-floating {
-  width: 50%;
+  width: 100%;
+  max-width: 350px;
 }
 .fullscreenInputContainer input {
   width: 100%;
@@ -12447,23 +12450,50 @@ nav {
   border: 3px solid #6b65ae;
   background: #1a1a1a;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding-left: 20px;
   margin-right: 20px;
   position: relative;
   margin-bottom: 20px;
 }
+.fullscreenInputContainer input:focus {
+  background-color: #1a1a1a;
+  color: #fff;
+}
 
 .fullScreenModalBtn {
   display: flex;
-  width: 50%;
+  width: 100%;
+  max-width: 350px;
   justify-content: space-between;
   align-items: center;
 }
 .fullScreenModalBtn p {
-  margin: 0;
+  margin: 0 10px 0 10px;
+}
+.fullScreenModalBtn button {
+  min-width: 150px;
 }
 
+@media screen and (max-width: 579px) {
+  .fullscreenModalContent {
+    width: 90%;
+    max-width: 90%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .fullScreenModalBtn {
+    flex-direction: column;
+  }
+  .fullScreenModalBtn p {
+    margin: 10px 0 10px 0;
+  }
+  .fullscreenForm {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+  }
+}
 .previewMain {
   display: flex;
   flex-direction: column;
