@@ -1,5 +1,6 @@
 import { triggerHamburger } from "../modals/hamburger.js";
 import { errorLogin } from "../modals/errorLogin.js";
+import { createUser } from "../modals/createUser.js";
 
 export function mainNavbar() {
   const mainNav = document.getElementById("mainNav");
@@ -55,6 +56,9 @@ export function mainNavbar() {
   const registerBtnText = document.createElement("span");
   if (!accessToken) {
     registerBtnText.textContent = "Register";
+    registerBtn.addEventListener("click", () => {
+      createUser();
+    });
   } else {
     registerBtnText.textContent = "Profile";
   }
@@ -87,15 +91,33 @@ export function mainNavbar() {
   const hamburgerLi2 = document.createElement("li");
   hamburgerLi2.textContent = "Sell something!";
   const hamburgerLi3 = document.createElement("li");
+  if (!accessToken) {
+    hamburgerLi3.textContent = "Login";
+  } else {
+    hamburgerLi3.textContent = "Logout";
+    hamburgerLi3.addEventListener("click", () => {
+      localStorage.clear();
+      window.location.reload();
+    });
+  }
   hamburgerLi3.textContent = "Login";
+  hamburgerLi3.addEventListener("click", () => {
+    errorLogin();
+  });
   const hamburgerLi4 = document.createElement("li");
+  if (!accessToken) {
+    hamburgerLi4.textContent = "Register";
+  } else {
+    hamburgerLi4.textContent = "Profile";
+  }
   hamburgerLi4.textContent = "Register";
-  const hamburgerLi5 = document.createElement("li");
-  hamburgerLi5.textContent = "Profile";
+  hamburgerLi4.addEventListener("click", () => {
+    createUser();
+  });
+
 
   hamburgerUl.appendChild(hamburgerLi1);
   hamburgerUl.appendChild(hamburgerLi2);
   hamburgerUl.appendChild(hamburgerLi3);
   hamburgerUl.appendChild(hamburgerLi4);
-  hamburgerUl.appendChild(hamburgerLi5);
 }

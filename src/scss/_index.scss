@@ -22,6 +22,10 @@ main {
   }
 }
 
+a{
+  text-decoration: none;
+}
+
 .hero {
   height: 570px;
   background-image: url("https://images.unsplash.com/photo-1534254910684-68bdc1d69cf7?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -44,15 +48,15 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
 }
 
 .tags-card {
-  min-width: 293px;
-  height: 240px;
+  width: 30%;
+  height: 190px;
   border-radius: 41px;
   background: $gray-600;
   box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
@@ -61,10 +65,51 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  text-decoration: none !important; 
   &:hover {
     background-color: $gray-700;
     cursor: pointer;
   }
+  & img{
+    width: auto;
+    height: 50px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  & h3 {
+    color: $white;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .tags-card {
+    width: 30%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    flex-wrap: wrap;
+
+    & img{
+display: none;
+    }
+
+    .tags-name{
+      margin: 0;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 523px) {
+  .tags-card {
+    width: 100%;
+    flex-direction: row;
+
+}
+
 }
 
 .tags-card h3 {

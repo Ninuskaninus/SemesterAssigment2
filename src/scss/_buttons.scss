@@ -60,3 +60,8 @@
   height: 50px;
   border-radius: 41px;
 }
+
+.bidLink:hover{
+  color: $secondary;
+  text-decoration: underline;
+}

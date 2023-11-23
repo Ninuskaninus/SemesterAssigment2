@@ -5,7 +5,7 @@ const url = base_url + login_url;
 export function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const loginModal = document.getElementById("errorLoginModal");
+  const loginModal = document.getElementById("loginModal");
 
   const loginObject = {
     email: email,
@@ -23,6 +23,7 @@ export function login() {
       };
       const response = await fetch(url, postData);
       const json = await response.json();
+
 
       if (response.ok) {
         loginModal.style.display = "none";

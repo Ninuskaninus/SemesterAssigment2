@@ -7,7 +7,6 @@ const thisID = currentUrl.split("=")[1];
 const accesToken = localStorage.getItem("accessToken");
 
 const thisListing = listings.filter((listing) => listing.id === thisID);
-console.log(thisListing);
 const thisBids = thisListing[0].bids;
 const highestBid = thisBids.reduce((prev, current) =>
   prev.amount > current.amount ? prev : current
@@ -16,7 +15,6 @@ const currentPrice = highestBid.amount;
 const myUsername = localStorage.getItem("username");
 
 const thisMedia = thisListing[0].media;
-console.log(thisMedia);
 
 export function previewListings() {
   const bidBtn = document.getElementById("bidOnThis");

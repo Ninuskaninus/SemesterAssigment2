@@ -1,27 +1,32 @@
 import { login } from "../API/POST/login.js";
 import { secondaryNavbar } from "./secondary-navbar.js";
+import { createUser } from "../modals/createUser.js";
+
+const accessToken = localStorage.getItem("token");
 
 export function errorLoginModal() {
-  const mainContainer = document.getElementById("indexMain");
+  const mainContainer = document.getElementById("loginModal");
 
   const fullScreenModal = document.createElement("div");
   fullScreenModal.classList.add("fullscreenModal");
-  fullScreenModal.id = "errorLoginModal";
+  fullScreenModal.style.top = "85px";
   mainContainer.appendChild(fullScreenModal);
 
-  const xout = document.createElement("div");
+  const xout = document.createElement("p");
   xout.classList.add("x-out");
-  fullScreenModal.appendChild(xout);
+  xout.innerText = "Close";
+  mainContainer.appendChild(xout);
   xout.addEventListener("click", () => {
-    fullScreenModal.style.display = "none";
+    mainContainer.remove();
   });
 
   const modal = document.createElement("div");
   modal.classList.add("fullscreenModalContent");
-  fullScreenModal.appendChild(modal);
+  mainContainer.appendChild(modal);
 
   const fullscreenForm = document.createElement("form");
   fullscreenForm.classList.add("fullscreenForm");
+  fullscreenForm.id = "loginForm";
   modal.appendChild(fullscreenForm);
 
   const logo = document.createElement("img");
@@ -29,6 +34,7 @@ export function errorLoginModal() {
   fullscreenForm.appendChild(logo);
 
   const errorText = document.createElement("h2");
+  errorText.id = "loginErrorText";
   errorText.innerText = "You have to be logged in to make a bid";
   fullscreenForm.appendChild(errorText);
 
@@ -80,6 +86,9 @@ export function errorLoginModal() {
   loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     login();
+    setInterval(() => {
+      window.location.reload();
+    }, 1000);
   });
 
   const dividerBtn = document.createElement("p");
@@ -90,5 +99,10 @@ export function errorLoginModal() {
   registerBtn.type = "button";
   registerBtn.innerText = "Register";
   registerBtn.classList.add("btn", "mainBtnWhite");
+  registerBtn.addEventListener("click", () => {
+    mainContainer.remove();
+    createUser();
+
+  });
   loginBtnContainer.appendChild(registerBtn);
 }
