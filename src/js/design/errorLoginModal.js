@@ -35,7 +35,7 @@ export function errorLoginModal() {
 
   const errorText = document.createElement("h2");
   errorText.id = "loginErrorText";
-  errorText.innerText = "You have to be logged in to make a bid";
+  errorText.innerText = "You have to be logged in to make a bid or sell an item!";
   fullscreenForm.appendChild(errorText);
 
   const inputContainer = document.createElement("div");

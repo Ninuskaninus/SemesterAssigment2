@@ -12381,9 +12381,9 @@ nav {
 }
 
 .fullscreenModal {
-  position: fixed;
+  position: absolute;
   top: 85px;
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgba(33, 33, 33, 0.6901960784);
   z-index: 1000;
@@ -12406,7 +12406,7 @@ nav {
   width: 70%;
   max-width: 650px;
   height: fit-content;
-  max-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: top;
@@ -12460,6 +12460,22 @@ nav {
   background-color: #1a1a1a;
   color: #fff;
 }
+.fullscreenInputContainer textarea {
+  width: 100%;
+  min-height: 150px;
+  border: 3px solid #6b65ae;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.fullscreenInputContainer textarea:focus {
+  background-color: #1a1a1a;
+  color: #fff;
+}
 
 .fullScreenModalBtn {
   display: flex;
@@ -12494,6 +12510,93 @@ nav {
     padding: 10px;
   }
 }
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.tags input {
+  width: 75%;
+  margin-right: 0;
+}
+.tags button {
+  width: 20%;
+  height: 58px;
+  border: none;
+  background-color: #6B65AD;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.tagContainer {
+  width: 100%;
+  max-width: 350px;
+  display: none;
+  align-items: left;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tagContainer p {
+  padding: 5px;
+  background-color: #6B65AD;
+  color: #fff;
+  border-radius: 15px;
+  min-width: 50px;
+  text-align: center;
+  position: relative;
+}
+.tagContainer button {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border: none;
+  background-color: #F04D23;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}
+
+.imageUrlsContainer {
+  width: 100%;
+  max-width: 350px;
+  display: none;
+  align-items: left;
+  gap: 10px;
+  margin-bottom: 20px;
+  border: 1px #6B65AD solid;
+  padding: 15px;
+}
+.imageUrlsContainer button {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border: none;
+  background-color: #F04D23;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}
+
+.imagePreview {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
 .previewMain {
   display: flex;
   flex-direction: column;
