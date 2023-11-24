@@ -1,6 +1,7 @@
 import { triggerHamburger } from "../modals/hamburger.js";
 import { errorLogin } from "../modals/errorLogin.js";
 import { createUser } from "../modals/createUser.js";
+import { sellModalTrigger } from "../modals/sellModalTrigger.js";
 
 export function mainNavbar() {
   const mainNav = document.getElementById("mainNav");
@@ -23,6 +24,9 @@ export function mainNavbar() {
   const sellNowBtn = document.createElement("button");
   sellNowBtn.classList.add("mainBtn", "ml-2");
   sellNowBtn.textContent = "Sell something!";
+  sellNowBtn.addEventListener("click", () => {
+    sellModalTrigger();
+  });
   navLeft.appendChild(sellNowBtn);
 
   const navRight = document.createElement("div");
@@ -90,6 +94,9 @@ export function mainNavbar() {
   hamburgerLi1.textContent = "Home";
   const hamburgerLi2 = document.createElement("li");
   hamburgerLi2.textContent = "Sell something!";
+  hamburgerLi2.addEventListener("click", () => {
+    sellModalTrigger();
+  });
   const hamburgerLi3 = document.createElement("li");
   if (!accessToken) {
     hamburgerLi3.textContent = "Login";

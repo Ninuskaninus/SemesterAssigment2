@@ -1,3 +1,5 @@
+import { sellModalTrigger } from "../modals/sellModalTrigger.js";
+
 export function heroBanner() {
   const main = document.getElementById("indexMain");
 
@@ -20,6 +22,9 @@ export function heroBanner() {
 
   const heroBtn = document.createElement("button");
   heroBtn.textContent = "Get Started";
+  heroBtn.addEventListener("click", () => {
+    sellModalTrigger();
+  });
   heroBtn.classList.add("btn", "mainBtn");
   hero.appendChild(heroBtn);
 }
