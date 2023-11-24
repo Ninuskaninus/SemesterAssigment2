@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/src/assets/favicon-16x16.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/dist/css/style.css" />
+
+    <title>Profile</title>
+</head>
+<body>
+    <nav class="secodaryNav" id="secondaryNav"></nav>
+    <nav class="mainNav container" id="mainNav"></nav>
+    <div class="nav-container-burger-content" id="hamburgerContent"></div>
+    <div class="profile-hero ">
+        <div class="profile-hero-container">
+            <p>Credit: <span>1000</span></p>
+            <button class="slimBtn">Change avatar</button>
+        </div>
+        <div class="profile-hero-user">
+            <div class="profile-img"></div>
+            <div class="profile-user-info">
+                <h1>Username</h1>
+            </div>
+        </div>
+    </div>
+    <main id="profileMain">
+        <div class="mainContainer" id="maincontainer-profile">
+            
+            <div class="mysales-container">
+                <div class="mysales-header">
+                    <h2>My listings</h2>
+                </div>
+                <div class="mysales-content">
+                    <div class="mysales-card">
+                        <div class="mysales-img"></div>
+                        <div class="mysale-info-container">
+                            <div class="mysale-current-price">
+                                <p>Credit: <span>100</span></p>
+                            </div>
+                            <div class="mysale-info">
+                                <h4>Item name</h4>
+                                <p>Time left</p>
+                                <button class="btn secondaryBtn btnBlue">See more</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fullscreenModal" id="loginModal"></div>
+        <div class="fullscreenModal" id="registerModal"></div>
+        <div class="fullscreenModal" id="sellModal"></div>
+    </main>
+    <script type="module" src="/src/js/pages/profile.js"></script>
+</body>
+</html>

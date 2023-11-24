@@ -12380,6 +12380,31 @@ nav {
   text-decoration: underline;
 }
 
+.slimBtn {
+  width: 180px;
+  height: 25px;
+  padding: 5px;
+  background-color: #6B65AD;
+  color: #fff;
+  border-radius: 18px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slimBtn:hover {
+  background-color: #343434;
+  transition: 0.5s;
+}
+
+.btnBlue {
+  background-color: #237B8B;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
+
 .fullscreenModal {
   position: absolute;
   top: 85px;
@@ -12748,6 +12773,108 @@ p {
 
 .myBid {
   color: #509041;
+}
+
+#profileMain {
+  flex-direction: column;
+}
+
+.profile-hero {
+  height: 340px;
+  background-image: url("https://images.unsplash.com/photo-1534254910684-68bdc1d69cf7?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+.profile-hero-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: row;
+  padding: 20px;
+}
+.profile-hero-container p {
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.profile-hero-container span {
+  font-weight: 600;
+}
+
+.profile-hero-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.mysales-card {
+  max-width: 200px;
+}
+
+.mysales-img {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  border-radius: 25px 25px 0 0;
+}
+
+.mysale-info-container {
+  border-radius: 0 0 25px 25px;
+  background: #343434;
+  box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  position: relative;
+}
+
+.mysales-header {
+  margin-bottom: 20px;
+}
+
+.mysale-current-price {
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  background-color: #6B65AD;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 0 0 0 25px;
+  border-radius: 25px;
+}
+.mysale-current-price p {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.mysale-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.mysale-info p {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

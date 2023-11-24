@@ -65,6 +65,9 @@ export function mainNavbar() {
     });
   } else {
     registerBtnText.textContent = "Profile";
+    registerBtn.addEventListener("click", () => {
+      window.location.href = "/profile/index.html";
+    });
   }
   registerBtn.appendChild(registerBtnIcon);
   registerBtn.appendChild(registerBtnText);
@@ -119,7 +122,11 @@ export function mainNavbar() {
   }
   hamburgerLi4.textContent = "Register";
   hamburgerLi4.addEventListener("click", () => {
-    createUser();
+    if (!accessToken) {
+      createUser();
+    } else {
+      window.location.href = "/profile/index.html";
+    }
   });
 
 
