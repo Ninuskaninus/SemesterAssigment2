@@ -100,34 +100,33 @@ export function mainNavbar() {
   hamburgerLi2.addEventListener("click", () => {
     sellModalTrigger();
   });
+  
   const hamburgerLi3 = document.createElement("li");
   if (!accessToken) {
     hamburgerLi3.textContent = "Login";
+    hamburgerLi3.addEventListener("click", () => {
+      errorLogin();
+    });
   } else {
     hamburgerLi3.textContent = "Logout";
     hamburgerLi3.addEventListener("click", () => {
       localStorage.clear();
-      window.location.reload();
+      window.location.href = "/index.html";
     });
   }
-  hamburgerLi3.textContent = "Login";
-  hamburgerLi3.addEventListener("click", () => {
-    errorLogin();
-  });
+
+  
   const hamburgerLi4 = document.createElement("li");
   if (!accessToken) {
     hamburgerLi4.textContent = "Register";
   } else {
     hamburgerLi4.textContent = "Profile";
-  }
-  hamburgerLi4.textContent = "Register";
-  hamburgerLi4.addEventListener("click", () => {
-    if (!accessToken) {
-      createUser();
-    } else {
+    hamburgerLi4.addEventListener("click", () => {
       window.location.href = "/profile/index.html";
-    }
-  });
+    });
+  }
+
+
 
 
   hamburgerUl.appendChild(hamburgerLi1);

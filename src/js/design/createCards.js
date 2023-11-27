@@ -3,16 +3,14 @@ import { errorLogin } from "../modals/errorLogin.js";
 
 const accessToken = localStorage.getItem("token");
 
-async function createCards(recentUploadsCard) {
+
+export async function createCards(recentUploadsCard) {
   const listings = await getListings();
+
 
   listings.forEach((listing) => {
     const deadline = new Date(listing.endsAt);
 
-    // Check if the deadline is after today's date
-    if (deadline > new Date()) {
-      
-      
       const card = document.createElement("div");
       card.classList.add("item-card");
       card.id = listing.id;
@@ -120,9 +118,7 @@ async function createCards(recentUploadsCard) {
       updateCardLayout();
       window.addEventListener("resize", updateCardLayout);
     }
-  });
-
-  // ... (rest of your function logic)
+  );
 }
 
-export { createCards };
+
