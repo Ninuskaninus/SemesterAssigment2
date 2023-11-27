@@ -12,6 +12,7 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 100px;
+    position: relative;
 }
 
 .profile-hero-container{
@@ -22,6 +23,7 @@
     flex-direction: column;
     flex-direction: row;
     padding: 20px;
+
     & p{
         color: white;
         font-size: 1.0rem;
@@ -46,10 +48,13 @@
     border-radius: 50%;
     background-color: white;
     margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid $white;
 }
 
 .mysales-card{
-    max-width: 200px;
+    width: 100%;
 }
 
 .mysales-img{
@@ -57,6 +62,8 @@
     height: 200px;
     background-color: white;
     border-radius: 25px 25px 0 0;
+    background-size: cover;
+    background-position: center;
 }
 
 .mysale-info-container{
@@ -65,6 +72,15 @@ background: #343434;
 box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
 padding: 20px;
 position: relative;
+min-height: 200px;
+}
+
+.mysales-content{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 20px;
 }
 
 .mysales-header{
@@ -97,5 +113,74 @@ position: relative;
         font-size: 0.8rem;
         font-weight: 400;
         margin-bottom: 20px;
+        text-align: center;
+    }
+    & button{
+        align-self: center;
+        justify-self: bottom;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .mysales-content{
+        flex-direction: column;
+    }
+
+    .mysales-card{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mysales-img{
+        border-radius: 25px 0px 0px 25px;
+    }
+
+    .mysale-info-container{
+        border-radius: 0px 25px 25px 0px;
+    }
+}
+
+.myBids{
+    margin-top: 50px;
+}
+
+.bidHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 20px;
+    border-bottom: 1px solid $gray-400;
+    padding-bottom: 5px;
+}
+
+.bidContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 20px;
+    border-bottom: 1px solid $gray-400;
+    padding-bottom: 5px;
+
+    & p{
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+    & span{
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+}
+
+.myBidsContainer{
+    margin-top: 30px;
+}
+
+.otherBid{
+    color: $red;
+}
+

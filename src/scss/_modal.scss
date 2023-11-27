@@ -232,3 +232,53 @@
   background-size: cover;
   position: relative;
 }
+
+.avatarModalContainer{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #212121b0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & form{
+    width: 80%;
+  }
+
+  & input {
+    width: 100%;
+    height: 50px;
+    border: 3px solid #6b65ae;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 1rem;
+    padding-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  & input:focus{
+    background-color: #1a1a1a;
+    color: $white;
+  }
+}
+
+.changeAvatar{
+  display: flex;
+  flex-direction: row;
+
+  & button {
+    height: 58px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .changeAvatar{
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}

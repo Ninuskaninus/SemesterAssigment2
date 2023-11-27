@@ -13,39 +13,41 @@
     <nav class="mainNav container" id="mainNav"></nav>
     <div class="nav-container-burger-content" id="hamburgerContent"></div>
     <div class="profile-hero ">
+        <div class="avatarModalContainer" id="avatarModal">
+            <form  id="changeAvatarForm">
+            <div class="form-floating changeAvatar" >
+                <input class="form-control" placeholder="Avatar url" type="text" name="avatar" id="changeAvatar">
+                <label for="changeAvatar">Avatar Url</label>
+                <button type="button" class="secondaryBtn" id="submitBtn">Submit</button>
+            </div>
+        </form>
+        <button class="cancelBtn" id="cancelBtn">Cancel</button>
+        </div>
         <div class="profile-hero-container">
-            <p>Credit: <span>1000</span></p>
-            <button class="slimBtn">Change avatar</button>
+            <p>Credit: <span id="userCredit">1000</span></p>
+            <button class="slimBtn" id="avatarBtn">Change avatar</button>
         </div>
         <div class="profile-hero-user">
-            <div class="profile-img"></div>
+            <div class="profile-img" id="userAvatar"></div>
             <div class="profile-user-info">
-                <h1>Username</h1>
+                <h1 id="userName">Username</h1>
             </div>
         </div>
     </div>
     <main id="profileMain">
         <div class="mainContainer" id="maincontainer-profile">
-            
             <div class="mysales-container">
                 <div class="mysales-header">
                     <h2>My listings</h2>
                 </div>
-                <div class="mysales-content">
-                    <div class="mysales-card">
-                        <div class="mysales-img"></div>
-                        <div class="mysale-info-container">
-                            <div class="mysale-current-price">
-                                <p>Credit: <span>100</span></p>
-                            </div>
-                            <div class="mysale-info">
-                                <h4>Item name</h4>
-                                <p>Time left</p>
-                                <button class="btn secondaryBtn btnBlue">See more</button>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="mysales-content" id="cardsContainer"></div>
+            </div>
+            <div class="myBids">
+                <div class="myBidsHead">
+                    <h2>My bidding history</h2>
+                </div>
+                <div class="myBidsContainer" id="bidsContainer">
+                    <a class="bidContainer"></a>
                 </div>
             </div>
         </div>

@@ -12405,6 +12405,14 @@ nav {
   padding: 5px 20px;
 }
 
+.cancelBtn {
+  background-color: #F04D23;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
+
 .fullscreenModal {
   position: absolute;
   top: 85px;
@@ -12622,6 +12630,51 @@ nav {
   position: relative;
 }
 
+.avatarModalContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(33, 33, 33, 0.6901960784);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.avatarModalContainer form {
+  width: 80%;
+}
+.avatarModalContainer input {
+  width: 100%;
+  height: 50px;
+  border: 3px solid #6b65ae;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.avatarModalContainer input:focus {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.changeAvatar {
+  display: flex;
+  flex-direction: row;
+}
+.changeAvatar button {
+  height: 58px;
+}
+
+@media screen and (max-width: 376px) {
+  .changeAvatar {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
 .previewMain {
   display: flex;
   flex-direction: column;
@@ -12789,6 +12842,7 @@ p {
   align-items: center;
   flex-direction: column;
   margin-bottom: 100px;
+  position: relative;
 }
 
 .profile-hero-container {
@@ -12823,10 +12877,13 @@ p {
   border-radius: 50%;
   background-color: white;
   margin-bottom: 10px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
 }
 
 .mysales-card {
-  max-width: 200px;
+  width: 100%;
 }
 
 .mysales-img {
@@ -12834,6 +12891,8 @@ p {
   height: 200px;
   background-color: white;
   border-radius: 25px 25px 0 0;
+  background-size: cover;
+  background-position: center;
 }
 
 .mysale-info-container {
@@ -12842,6 +12901,15 @@ p {
   box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   position: relative;
+  min-height: 200px;
+}
+
+.mysales-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 20px;
 }
 
 .mysales-header {
@@ -12875,6 +12943,68 @@ p {
   font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 20px;
+  text-align: center;
+}
+.mysale-info button {
+  align-self: center;
+  justify-self: bottom;
+}
+
+@media screen and (max-width: 550px) {
+  .mysales-content {
+    flex-direction: column;
+  }
+  .mysales-card {
+    display: flex;
+    flex-direction: row;
+  }
+  .mysales-img {
+    border-radius: 25px 0px 0px 25px;
+  }
+  .mysale-info-container {
+    border-radius: 0px 25px 25px 0px;
+  }
+}
+.myBids {
+  margin-top: 50px;
+}
+
+.bidHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 20px;
+  border-bottom: 1px solid #ced4da;
+  padding-bottom: 5px;
+}
+
+.bidContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 20px;
+  border-bottom: 1px solid #ced4da;
+  padding-bottom: 5px;
+}
+.bidContainer p {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.bidContainer span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.myBidsContainer {
+  margin-top: 30px;
+}
+
+.otherBid {
+  color: #F04D23;
 }
 
 /*# sourceMappingURL=style.css.map */
