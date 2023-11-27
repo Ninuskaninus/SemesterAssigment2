@@ -5,6 +5,7 @@ const listings = await getListings();
 const currentUrl = window.location.href;
 const thisID = currentUrl.split("=")[1];
 const accesToken = localStorage.getItem("accessToken");
+const username = localStorage.getItem("username");
 
 const thisListing = listings.filter((listing) => listing.id === thisID);
 const thisBids = thisListing[0].bids;
@@ -12,8 +13,6 @@ const highestBid = thisBids.reduce((prev, current) =>
   prev.amount > current.amount ? prev : current
 );
 const currentPrice = highestBid.amount;
-const myUsername = localStorage.getItem("username");
-
 const thisMedia = thisListing[0].media;
 
 export function previewListings() {
@@ -30,6 +29,9 @@ export function previewListings() {
   const previewImage = document.createElement("div");
   previewImage.classList.add("previewImg");
   previewImage.style.backgroundImage = "url(" + thisMedia + ")";
+  if (thisMedia === " " || thisMedia === null) {
+    previewImage.style.backgroundImage = "url(https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image@2x.png)";
+  }
   previewTrack.appendChild(previewImage);
 
   thisListing.forEach((listing) => {
@@ -71,14 +73,18 @@ export function previewListings() {
 
       const bidUsername = document.createElement("p");
       bidUsername.innerHTML = bid.bidderName;
+      if (bid.bidderName === username) {
+        bidUsername.innerHTML = "You";
+        bidUsername.style.color = "green"
+      }
       bidItem.appendChild(bidUsername);
 
       const bidAmount = document.createElement("p");
       bidAmount.innerHTML = bid.amount + " credits";
       bidItem.appendChild(bidAmount);
 
-      if (myUsername) {
-        if (bid.bidderName === myUsername) {
+      if (username) {
+        if (bid.bidderName === username) {
           bidItem.classList.add("myBid");
         } else {
           bidItem.classList.remove("myBid");

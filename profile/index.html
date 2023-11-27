@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/src/assets/favicon-16x16.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/dist/css/style.css" />
+
+    <title>Profile</title>
+</head>
+<body>
+    <nav class="secodaryNav" id="secondaryNav"></nav>
+    <nav class="mainNav container" id="mainNav"></nav>
+    <div class="nav-container-burger-content" id="hamburgerContent"></div>
+    <div class="profile-hero ">
+        <div class="avatarModalContainer" id="avatarModal">
+            <form  id="changeAvatarForm">
+            <div class="form-floating changeAvatar" >
+                <input class="form-control" placeholder="Avatar url" type="text" name="avatar" id="changeAvatar">
+                <label for="changeAvatar">Avatar Url</label>
+                <button type="button" class="secondaryBtn" id="submitBtn">Submit</button>
+            </div>
+        </form>
+        <button class="cancelBtn" id="cancelBtn">Cancel</button>
+        </div>
+        <div class="profile-hero-container">
+            <p>Credit: <span id="userCredit">1000</span></p>
+            <button class="slimBtn" id="avatarBtn">Change avatar</button>
+        </div>
+        <div class="profile-hero-user">
+            <div class="profile-img" id="userAvatar"></div>
+            <div class="profile-user-info">
+                <h1 id="userName">Username</h1>
+            </div>
+        </div>
+    </div>
+    <main id="profileMain">
+        <div class="mainContainer" id="maincontainer-profile">
+            <div class="mysales-container">
+                <div class="mysales-header">
+                    <h2>My listings</h2>
+                </div>
+                <div class="mysales-content" id="cardsContainer"></div>
+            </div>
+            <div class="myBids">
+                <div class="myBidsHead">
+                    <h2>My bidding history</h2>
+                </div>
+                <div class="myBidsContainer" id="bidsContainer">
+                    <a class="bidContainer"></a>
+                </div>
+            </div>
+        </div>
+        <div class="fullscreenModal" id="loginModal"></div>
+        <div class="fullscreenModal" id="registerModal"></div>
+        <div class="fullscreenModal" id="sellModal"></div>
+    </main>
+    <script type="module" src="/src/js/pages/profile.js"></script>
+</body>
+</html>

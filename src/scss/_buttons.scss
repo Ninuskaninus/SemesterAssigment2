@@ -65,3 +65,38 @@
   color: $secondary;
   text-decoration: underline;
 }
+
+.slimBtn{
+  width: 180px;
+height: 25px;
+padding: 5px;
+background-color: $secondary;
+color: $white;
+border-radius: 18px;
+border: none;
+display: flex;
+justify-content: center;
+align-items: center;
+
+&:hover
+{
+  background-color: $gray-600;
+  transition: 0.5s;
+}
+}
+
+.btnBlue{
+  background-color: $blue;
+  color: $white;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
+
+.cancelBtn{
+  background-color: $red;
+  color: $white;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
