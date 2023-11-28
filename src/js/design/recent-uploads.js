@@ -1,5 +1,5 @@
 import { createCards } from "./createCards.js";
-import { removeEnded } from "../modals/removeEnded.js";
+import { removeEnded } from "../sorting/removeEnded.js";
 export function recentUploads() {
   const mainContainer = document.getElementById("maincontainer-index");
   const recentUploads = document.createElement("div");
@@ -10,13 +10,6 @@ export function recentUploads() {
   recentUploadsHeader.innerText = "Recent Uploads";
   recentUploads.appendChild(recentUploadsHeader);
 
-  const recentUploadsButton = document.createElement("button");
-  recentUploadsButton.classList.add("mainBtn", "btn");
-  recentUploadsButton.textContent = "Remove ended auctions";
-  recentUploadsButton.addEventListener("click", () => {
-    removeEnded();
-  });
-  recentUploads.appendChild(recentUploadsButton);
 
   const recentUploadsContainer = document.createElement("div");
   recentUploadsContainer.classList.add("cardsContainer");

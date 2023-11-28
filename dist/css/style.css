@@ -12373,6 +12373,8 @@ nav {
   width: 80%;
   height: 50px;
   border-radius: 41px;
+  outline: none;
+  border: none;
 }
 
 .bidLink:hover {
@@ -12680,6 +12682,8 @@ nav {
   flex-direction: column;
   max-width: 950px;
   position: relative;
+  background-position: center;
+  background-size: cover;
 }
 
 .preview-container {
@@ -12693,6 +12697,8 @@ nav {
 .gallery-track {
   width: 100%;
   height: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 .galleryContainer {
@@ -12738,11 +12744,11 @@ nav {
   background-color: #343434;
   color: #fff;
   border-radius: 41px;
+  width: 100%;
 }
 
 .related-info {
   min-height: 150px;
-  justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
@@ -12775,7 +12781,42 @@ nav {
 .latest-bids {
   margin-top: 20px;
   max-height: 200px;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.bidlistHead {
+  margin-top: 20px;
+}
+
+/* Thin scrollbar track */
+.latest-bids::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle on hover */
+.latest-bids::-webkit-scrollbar-thumb:hover {
+  background: #6B65AD;
+}
+
+/* Handle */
+.latest-bids::-webkit-scrollbar-thumb {
+  background: #6B65AD;
+}
+
+/* Handle when it's being dragged */
+.latest-bids::-webkit-scrollbar-thumb:active {
+  background: #6B65AD;
+}
+
+/* Track */
+.latest-bids::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle on top and bottom */
+.latest-bids::-webkit-scrollbar-corner {
+  background: #ddd;
 }
 
 .whiteDivider {
@@ -12793,6 +12834,11 @@ nav {
   border-bottom: 1px solid #fff;
 }
 
+@media screen and (max-width: 400px) {
+  .bid {
+    flex-direction: column;
+  }
+}
 .seller-info {
   margin-bottom: 50px;
   display: flex;
@@ -12828,6 +12874,86 @@ p {
 
 .myBid {
   color: #509041;
+}
+
+.gallery-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  overflow-x: auto; /* Use auto to enable horizontal scrolling if needed */
+  overflow-y: hidden; /* Hide vertical scrollbar initially */
+  max-width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.gallery-nav-item {
+  min-width: 100px; /* Set a minimum width to ensure the content is as wide as needed */
+  height: 100px;
+  background-color: aqua;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* Thin scrollbar track */
+.gallery-nav::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Handle on hover */
+.gallery-nav::-webkit-scrollbar-thumb:hover {
+  background: #6B65AD;
+}
+
+/* Handle */
+.gallery-nav::-webkit-scrollbar-thumb {
+  background: #6B65AD;
+}
+
+/* Handle when it's being dragged */
+.gallery-nav::-webkit-scrollbar-thumb:active {
+  background: #6B65AD;
+}
+
+/* Track */
+.gallery-nav::-webkit-scrollbar-track {
+  background: #343434;
+}
+
+/* Handle on top and bottom */
+.gallery-nav::-webkit-scrollbar-corner {
+  background: #343434;
+}
+
+.navigationArrowLeft {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  justify-content: center;
+  height: 100%;
+}
+
+.navigationArrowRight {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #212121;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  justify-content: center;
 }
 
 #profileMain {
@@ -12886,30 +13012,32 @@ p {
 
 .mysales-card {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mysales-img {
-  width: 100%;
-  height: 200px;
+  width: 150px;
   background-color: white;
-  border-radius: 25px 25px 0 0;
+  border-radius: 25px 0px 0px 25px;
   background-size: cover;
   background-position: center;
 }
 
 .mysale-info-container {
-  border-radius: 0 0 25px 25px;
+  border-radius: 0px 25px 25px 0px;
   background: #343434;
   box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   position: relative;
-  min-height: 200px;
+  min-height: 100px;
+  width: 100%;
 }
 
 .mysales-content {
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 10px;
   gap: 20px;
 }
@@ -12936,7 +13064,7 @@ p {
 .mysale-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   margin-top: 10px;
 }
@@ -12945,7 +13073,6 @@ p {
   font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 20px;
-  text-align: center;
 }
 .mysale-info button {
   align-self: center;

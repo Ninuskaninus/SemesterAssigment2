@@ -8,7 +8,7 @@ const url = base_url + listings_url;
  *
  * @returns {Promise<Array>} A promise that resolves to an array of formatted listings data.
  */
-export function getListings() {
+export async function  getListings() {
   return fetch(url, {
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export function getListings() {
           const getBids = listings.bids.map((bid) => ({
             amount: bid.amount,
             id: bid.id,
-            created: formatDateTime(bid.created),
+            created: bid.created,
             bidderName: bid.bidderName,
           }));
 
@@ -33,15 +33,15 @@ export function getListings() {
 
           const getListings = {
             bids: getBids,
-            created: formatDateTime(listings.created),
+            created: listings.created,
             description: listings.description,
-            endsAt: formatDateTime(listings.endsAt),
+            endsAt: listings.endsAt,
             id: listings.id,
             media: listings.media,
             seller: getSeller,
             tags: listings.tags,
             title: listings.title,
-            updated: formatDateTime(listings.updated),
+            updated: listings.updated,
             _count: listings._count,
           };
           return getListings;

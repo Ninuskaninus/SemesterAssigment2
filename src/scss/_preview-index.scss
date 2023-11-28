@@ -3,6 +3,8 @@
   flex-direction: column;
   max-width: 950px;
   position: relative;
+  background-position: center;
+  background-size: cover;
 }
 
 .preview-container {
@@ -16,6 +18,8 @@
 .gallery-track {
   width: 100%;
   height: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 .galleryContainer {
@@ -61,11 +65,11 @@
   background-color: $gray-600;
   color: $white;
   border-radius: 41px;
+  width: 100%;
 }
 
 .related-info {
   min-height: 150px;
-  justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
@@ -98,7 +102,43 @@
 .latest-bids {
   margin-top: 20px;
   max-height: 200px;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+.bidlistHead{
+  margin-top: 20px;
+}
+
+
+/* Thin scrollbar track */
+.latest-bids::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle on hover */
+.latest-bids::-webkit-scrollbar-thumb:hover {
+  background: $purple;
+}
+
+/* Handle */
+.latest-bids::-webkit-scrollbar-thumb {
+  background: $purple;
+}
+
+/* Handle when it's being dragged */
+.latest-bids::-webkit-scrollbar-thumb:active {
+  background: $purple;
+}
+
+/* Track */
+.latest-bids::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle on top and bottom */
+.latest-bids::-webkit-scrollbar-corner {
+  background: #ddd;
 }
 
 .whiteDivider {
@@ -114,6 +154,12 @@
   justify-content: space-between;
   margin-bottom: 20px;
   border-bottom: 1px solid $white;
+}
+
+@media screen and (max-width: 400px) {
+  .bid{
+    flex-direction: column;
+  }
 }
 
 .seller-info {
@@ -151,4 +197,84 @@ p {
 
 .myBid {
   color: $green;
+}
+
+.gallery-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  overflow-x: auto; /* Use auto to enable horizontal scrolling if needed */
+  overflow-y: hidden; /* Hide vertical scrollbar initially */
+  max-width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.gallery-nav-item {
+  min-width: 100px; /* Set a minimum width to ensure the content is as wide as needed */
+  height: 100px;
+  background-color: aqua;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* Thin scrollbar track */
+.gallery-nav::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Handle on hover */
+.gallery-nav::-webkit-scrollbar-thumb:hover {
+  background: $purple;
+}
+
+/* Handle */
+.gallery-nav::-webkit-scrollbar-thumb {
+  background: $purple;
+}
+
+/* Handle when it's being dragged */
+.gallery-nav::-webkit-scrollbar-thumb:active {
+  background: $purple;
+}
+
+/* Track */
+.gallery-nav::-webkit-scrollbar-track {
+  background: #343434;
+}
+
+/* Handle on top and bottom */
+.gallery-nav::-webkit-scrollbar-corner {
+  background:  #343434;
+}
+
+.navigationArrowLeft{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  justify-content: center;
+  height: 100%;
+}
+
+.navigationArrowRight{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: $primary;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  justify-content: center;
 }

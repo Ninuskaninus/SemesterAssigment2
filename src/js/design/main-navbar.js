@@ -25,7 +25,11 @@ export function mainNavbar() {
   sellNowBtn.classList.add("mainBtn", "ml-2");
   sellNowBtn.textContent = "Sell something!";
   sellNowBtn.addEventListener("click", () => {
-    sellModalTrigger();
+    if (!accessToken) {
+      errorLogin();
+    } else {
+      sellModalTrigger();
+    }
   });
   navLeft.appendChild(sellNowBtn);
 
