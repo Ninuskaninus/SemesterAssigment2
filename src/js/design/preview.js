@@ -1,95 +1,142 @@
 import { getListings } from "../API/GET/getListings.js";
 import { errorLoginModal } from "../design/errorLoginModal.js";
 
-const listings = await getListings();
-const currentUrl = window.location.href;
-const thisID = currentUrl.split("=")[1];
-const accesToken = localStorage.getItem("accessToken");
+const currentUrl = new URL(window.location.href);
+const thisID = currentUrl.searchParams.get("id");
+const accessToken = localStorage.getItem("accessToken");
 const username = localStorage.getItem("username");
 
-const thisListing = listings.filter((listing) => listing.id === thisID);
-const thisBids = thisListing[0].bids;
-const highestBid = thisBids.reduce((prev, current) =>
-  prev.amount > current.amount ? prev : current
-);
-const currentPrice = highestBid.amount;
-const thisMedia = thisListing[0].media;
+let thisListing;
+let thisBids;
+let currentPrice = 0;
+
+
+try {
+  const listings = await getListings();
+  thisListing = listings.find((listing) => listing.id === thisID);
+
+  if (thisListing) {
+    thisBids = thisListing.bids;
+    thisBids.sort((a, b) => b.amount - a.amount);
+    currentPrice = thisBids.length > 0
+      ? Math.max(...thisBids.map((bid) => bid.amount), 0)
+      : 0;
+  } else {
+    console.log("Listing not found");
+  }
+} catch (error) {
+  console.error("Error fetching listings:", error);
+}
+
+const thisMedia = thisListing?.media || "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image@2x.png";
+const deadlineDate = new Date(thisListing?.endsAt);
+const deadlineDateFormatted = deadlineDate.toLocaleDateString("no-NO", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 export function previewListings() {
   const bidBtn = document.getElementById("bidOnThis");
+
   bidBtn.addEventListener("click", () => {
-    if (!accesToken) {
+    if (!accessToken) {
       errorLoginModal();
     } else {
       console.log("bid");
     }
   });
-  const previewTrack = document.getElementById("previewImageMain");
 
-  const previewImage = document.createElement("div");
-  previewImage.classList.add("previewImg");
-  previewImage.style.backgroundImage = "url(" + thisMedia + ")";
-  if (thisMedia === " " || thisMedia === null) {
-    previewImage.style.backgroundImage = "url(https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image@2x.png)";
-  }
-  previewTrack.appendChild(previewImage);
-
-  thisListing.forEach((listing) => {
-    const sellerAvatar = document.getElementById("sellerAvatar");
-    sellerAvatar.style.backgroundImage =
-      "url(" + thisListing[0].seller.avatar + ")";
-    const sellerName = document.getElementById("sellerName");
-    sellerName.innerHTML = thisListing[0].seller.name;
-
-    const sellerEmail = document.getElementById("sellerEmail");
-    sellerEmail.innerHTML = thisListing[0].seller.email;
-
-    const deadline = document.getElementById("deadline");
-    deadline.innerHTML = thisListing[0].endsAt;
-
-    const title = document.getElementById("title");
-    title.innerHTML = thisListing[0].title;
-
-    const description = document.getElementById("description");
-    description.innerHTML = thisListing[0].description;
-
-    const highestBid = document.getElementById("credit");
-    highestBid.innerHTML = currentPrice + " credits";
-
-    const bidlist = document.getElementById("bidlist");
-
-    const bidHeading = document.createElement("h5");
-    bidHeading.innerHTML = "Latest bids";
-    bidlist.appendChild(bidHeading);
-
-    const bidDivider = document.createElement("div");
-    bidDivider.classList.add("whiteDivider");
-    bidlist.appendChild(bidDivider);
-
-    thisBids.forEach((bid) => {
-      const bidItem = document.createElement("div");
-      bidItem.classList.add("bid");
-      bidlist.appendChild(bidItem);
-
-      const bidUsername = document.createElement("p");
-      bidUsername.innerHTML = bid.bidderName;
-      if (bid.bidderName === username) {
-        bidUsername.innerHTML = "You";
-        bidUsername.style.color = "green"
-      }
-      bidItem.appendChild(bidUsername);
-
-      const bidAmount = document.createElement("p");
-      bidAmount.innerHTML = bid.amount + " credits";
-      bidItem.appendChild(bidAmount);
-
-      if (username) {
-        if (bid.bidderName === username) {
-          bidItem.classList.add("myBid");
-        } else {
-          bidItem.classList.remove("myBid");
-        }
+  const previewMain = document.getElementById("previewImageMain");
+  const previewGallery = document.getElementById("previewImageNav");
+  
+  // Assuming thisListing?.media is an array
+  if (thisListing?.media && thisListing.media.length > 0) {
+    thisListing.media.forEach((media, index) => {
+      const previewGalleryItem = document.createElement("div");
+      previewGalleryItem.classList.add("gallery-nav-item");
+      previewGalleryItem.style.backgroundImage = `url(${media})`;
+  
+      previewGalleryItem.addEventListener("click", () => {
+        // Set background image of previewMain
+        previewMain.style.backgroundImage = `url(${media})`;
+  
+        // Scroll to previewMain
+        previewMain.scrollIntoView({ behavior: "smooth" });
+      });
+  
+      previewGallery.appendChild(previewGalleryItem);
+  
+      // Display the first image on load
+      if (index === 0) {
+        previewMain.style.backgroundImage = `url(${media})`;
       }
     });
+  
+    // If there is only one image, hide the previewGallery
+    if (thisListing.media.length === 1) {
+      previewGallery.style.display = "none";
+    }
+  } else {
+    // If there are no images, hide the previewGallery
+    previewGallery.style.display = "none";
+  }
+  
+  
+
+
+
+  if (!thisListing) return;
+
+  const sellerAvatar = document.getElementById("sellerAvatar");
+  sellerAvatar.style.backgroundImage = `url(${thisListing.seller?.avatar})`;
+
+  const sellerName = document.getElementById("sellerName");
+  sellerName.innerHTML = thisListing.seller?.name;
+
+  const sellerEmail = document.getElementById("sellerEmail");
+  sellerEmail.innerHTML = thisListing.seller?.email;
+
+  const deadlineElement = document.getElementById("deadline");
+  deadlineElement.innerHTML = deadlineDateFormatted;
+
+  const titleElement = document.getElementById("title");
+  titleElement.innerHTML = thisListing.title;
+
+  const descriptionElement = document.getElementById("description");
+  descriptionElement.innerHTML = thisListing.description;
+
+  const highestBidElement = document.getElementById("credit");
+  highestBidElement.innerHTML = `${currentPrice} credits`;
+
+  const bidListElement = document.getElementById("bidlist");
+
+  const bidDivider = document.createElement("div");
+  bidDivider.classList.add("whiteDivider");
+  bidListElement.appendChild(bidDivider);
+
+  thisBids.forEach((bid) => {
+    const bidItem = document.createElement("div");
+    bidItem.classList.add("bid");
+    bidListElement.appendChild(bidItem);
+
+    const bidUsername = document.createElement("p");
+    bidUsername.innerHTML = bid.bidderName === username ? "You" : bid.bidderName;
+    bidUsername.style.color = bid.bidderName === username ? "green" : "";
+
+    bidItem.appendChild(bidUsername);
+
+    const bidAmount = document.createElement("p");
+    bidAmount.innerHTML = `${bid.amount} credits`;
+    bidItem.appendChild(bidAmount);
+
+    if (username && bid.bidderName === username) {
+      bidItem.classList.add("myBid");
+    } else {
+      bidItem.classList.remove("myBid");
+    }
   });
 }
+
