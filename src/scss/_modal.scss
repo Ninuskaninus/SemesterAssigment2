@@ -11,9 +11,6 @@
   padding-top: 80px;
 }
 
-
-
-
 .x-out {
   position: absolute;
   top: 120px;
@@ -82,7 +79,7 @@
     margin-bottom: 20px;
   }
 
-  & input:focus{
+  & input:focus {
     background-color: #1a1a1a;
     color: $white;
   }
@@ -100,12 +97,12 @@
     margin-bottom: 20px;
   }
 
-  & textarea:focus{
+  & textarea:focus {
     background-color: #1a1a1a;
     color: $white;
   }
 
-  & label::after{
+  & label::after {
     color: $white;
   }
 }
@@ -120,39 +117,39 @@
     margin: 0 10px 0 10px;
   }
 
-& button {
-  min-width: 150px;
-}
+  & button {
+    min-width: 150px;
+  }
 }
 
-@media screen and (max-width: 390px) {
-  .fullscreenModal{
+@media screen and (max-width: 560px) {
+  .fullscreenModal {
     padding-top: 0;
     position: absolute;
   }
-  
-  .fullscreenModalContent{
+
+  .fullscreenModalContent {
     width: 90%;
     max-width: 90%;
     padding-left: 10px;
     padding-right: 10px;
-    margin-top: 20px;
+    margin-top: 90px;
     padding-top: 35px;
   }
 
-  .fullScreenModalBtn{
+  .fullScreenModalBtn {
     flex-direction: column;
     & p {
       margin: 10px 0 10px 0;
     }
   }
 
-  .fullscreenForm{
+  .fullscreenForm {
     width: 100%;
     max-width: 100%;
     padding: 10px;
 
-    & h2{
+    & h2 {
       margin-bottom: 20px;
       width: 100%;
       text-align: left;
@@ -162,18 +159,18 @@
       padding: 10px;
     }
 
-    & img{
+    & img {
       max-height: 40px;
     }
   }
 
-  .x-out{
+  .x-out {
     top: 20px;
     right: 20px;
   }
 }
 
-.tags{
+.tags {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -200,7 +197,6 @@
   align-items: left;
   gap: 10px;
   margin-bottom: 20px;
-
 
   & p {
     padding: 5px;
@@ -229,7 +225,7 @@
   }
 }
 
-.imageUrlsContainer{
+.imageUrlsContainer {
   width: 100%;
   max-width: 350px;
   display: none;
@@ -256,9 +252,7 @@
   }
 }
 
-
-
-.imagePreview{
+.imagePreview {
   width: 50px;
   height: 50px;
   background-position: center;
@@ -266,7 +260,7 @@
   position: relative;
 }
 
-.avatarModalContainer{
+.avatarModalContainer {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -277,7 +271,7 @@
   justify-content: center;
   align-items: center;
 
-  & form{
+  & form {
     width: 80%;
   }
 
@@ -294,13 +288,13 @@
     margin-bottom: 20px;
   }
 
-  & input:focus{
+  & input:focus {
     background-color: #1a1a1a;
     color: $white;
   }
 }
 
-.changeAvatar{
+.changeAvatar {
   display: flex;
   flex-direction: row;
 
@@ -310,7 +304,7 @@
 }
 
 @media screen and (max-width: 376px) {
-  .changeAvatar{
+  .changeAvatar {
     flex-direction: column;
     margin-bottom: 20px;
   }
@@ -375,16 +369,17 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      color: $white;
+      color: $purple;
       transform: $form-floating-label-transform;
 
       &::after {
         position: absolute;
-        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        inset: $form-floating-padding-y ($form-floating-padding-x * 0.5);
         z-index: -1;
+        padding-bottom: 5px;
         height: $form-floating-label-height;
         content: "";
-        background-color: none;
+        background-color: transparent;
         @include border-radius($input-border-radius);
       }
     }
@@ -392,7 +387,10 @@
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
+      color: rgba(
+        var(--#{$prefix}body-color-rgb),
+        #{$form-floating-label-opacity}
+      );
       transform: $form-floating-label-transform;
     }
   }
@@ -404,7 +402,8 @@
   }
 
   > :disabled ~ label,
-  > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
+  > .form-control:disabled ~ label {
+    // Required for `.form-control`s because of specificity
     color: $form-floating-label-disabled-color;
 
     &::after {
@@ -413,33 +412,32 @@
   }
 }
 
-.bidForm{
+.bidForm {
   display: flex;
   align-items: baseline;
   padding: 50px;
   width: 100%;
 
-  & span{
+  & span {
     color: $purple;
     font-weight: 700;
   }
 
-  & h1{
+  & h1 {
     margin-bottom: 30px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .bidForm{
+  .bidForm {
     padding: 20px;
   }
-  
 }
 
-.itemBidContainer{
+.itemBidContainer {
   margin-top: 30px;
   width: 100%;
-  & input{
+  & input {
     background-color: $gray-600;
     outline: none;
     border: none;
@@ -450,13 +448,13 @@
     padding-left: 20px;
   }
 
-  & input:focus{
+  & input:focus {
     background-color: $gray-600;
     color: $white;
   }
 }
 
-.itemBtnContainer{
+.itemBtnContainer {
   margin-top: 50px;
   width: 100%;
   display: flex;
@@ -464,13 +462,13 @@
   align-items: center;
 }
 
-.text-id{
+.text-id {
   color: $white;
   font-size: 0.6rem;
   margin-top: 5px;
 }
 
-.itemImg{
+.itemImg {
   width: 100%;
   height: 200px;
   background-position: center;

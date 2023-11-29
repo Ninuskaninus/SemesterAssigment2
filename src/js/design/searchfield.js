@@ -1,3 +1,5 @@
+import { searchBar } from "../sorting/search.js";
+
 export function searchField() {
   const mainContainer = document.getElementById("maincontainer-index");
   const searchField = document.createElement("div");
@@ -14,7 +16,7 @@ export function searchField() {
   searchForm.appendChild(searchInput);
 
   const searchButton = document.createElement("button");
-  searchButton.type = "submit";
+  searchButton.type = "button";
   searchButton.id = "search-button";
   searchForm.appendChild(searchButton);
 
@@ -23,3 +25,5 @@ export function searchField() {
   searchIcon.alt = "search";
   searchButton.appendChild(searchIcon);
 }
+
+searchBar();
