@@ -215,8 +215,6 @@ function updateImageUrlsContainer() {
 
 }
 
-
-
 const buttonContainer = document.createElement("div");
 buttonContainer.classList.add("fullScreenModalBtn");
 fullscreenForm.appendChild(buttonContainer);

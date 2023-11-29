@@ -3,16 +3,42 @@ import { errorLogin } from "../modals/errorLogin.js";
 
 const accessToken = localStorage.getItem("token");
 
-async function createCards(recentUploadsCard) {
+
+export async function createCards(recentUploadsCard) {
   const listings = await getListings();
+  listings.sort((a, b) => new Date(b.updated) - new Date(a.updated));
+  const filteredListings = listings.filter((listing) => listing.title !== "tester");
 
-  listings.forEach((listing) => {
-    const deadline = new Date(listing.endsAt);
+  filteredListings.forEach((listing) => {
+    const deadline = new Date(listing.endsAt) ;
+    const deadlineFormatted = deadline.toLocaleDateString("no-NO", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const now = new Date();
+    const nowFormatted = now.toLocaleDateString("no-NO", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
-    // Check if the deadline is after today's date
-    if (deadline > new Date()) {
-      
-      
+    const listingDeadline = new Date(listing.endsAt);
+    const listingDeadlineFormatted = listingDeadline.toLocaleDateString(
+      "no-NO",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }
+    );
+
       const card = document.createElement("div");
       card.classList.add("item-card");
       card.id = listing.id;
@@ -45,25 +71,18 @@ async function createCards(recentUploadsCard) {
       cardContent.classList.add("item-info");
       cardContentContainer.appendChild(cardContent);
 
+
       const cardDeadline = document.createElement("p");
-      cardDeadline.classList.add("countdown");
-      document.body.appendChild(cardDeadline);
-      setInterval(function () {
-        const now = new Date();
-        const distance = deadline - now;
+      cardDeadline.innerHTML = "Deadline: " + listingDeadlineFormatted;
+      if (listingDeadline < now) {
+        cardDeadline.innerHTML = "Ended: " + listingDeadlineFormatted;
+        cardDeadline.classList.add("text-danger");
+      } else {
+        cardDeadline.innerHTML = "Deadline: " + listingDeadlineFormatted;
+        cardDeadline.classList.add("text-success");
+      }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-        if (days > 0) {
-          cardDeadline.innerHTML = days + " days left";
-        } else if (hours > 0) {
-          cardDeadline.innerHTML = hours + " hours left";
-        } else {
-          cardDeadline.innerHTML = "Ended";
-          cardDeadline.style.color = "red";
-        }
-      }, 1000);
+     
       cardContent.appendChild(cardDeadline);
 
       const cardTitle = document.createElement("h3");
@@ -75,7 +94,7 @@ async function createCards(recentUploadsCard) {
 
       const cardPrice = document.createElement("h3");
       cardPrice.classList.add("text-light");
-      cardPrice.innerHTML = listing._count.bids + " credit";
+      cardPrice.innerHTML = listing._count.bids + " bids";
       cardContent.appendChild(cardPrice);
 
       const cardButtons = document.createElement("div");
@@ -120,9 +139,7 @@ async function createCards(recentUploadsCard) {
       updateCardLayout();
       window.addEventListener("resize", updateCardLayout);
     }
-  });
-
-  // ... (rest of your function logic)
+  );
 }
 
-export { createCards };
+
