@@ -2,12 +2,18 @@ import { register } from "../API/POST/register.js";
 
 export function createUserModal() {
 const mainContainer = document.getElementById("registerModal");
+mainContainer.addEventListener("click", (e) => {
+  if (e.target.id === "registerModal") {
+    mainContainer.style.display = "none";
+  }
+});
 
 
 const fullScreenModal = document.createElement("div");
 fullScreenModal.classList.add("fullscreenModal");
 fullScreenModal.id = "fullscreenModalRegister";
-fullScreenModal.style.top = "85px";
+
+
 mainContainer.appendChild(fullScreenModal);
 
 const xout = document.createElement("p");
@@ -15,7 +21,7 @@ xout.classList.add("x-out");
 xout.innerText = "Close";
 mainContainer.appendChild(xout);
 xout.addEventListener("click", () => {
-  mainContainer.remove();
+  mainContainer.style.display = "none";
 });
 
 const modal = document.createElement("div");

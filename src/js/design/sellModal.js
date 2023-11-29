@@ -3,10 +3,18 @@ import { addListing } from "../API/POST/addListing.js";
 
 export function sellModal(){
     const maincontainer = document.getElementById("sellModal");
+    maincontainer.addEventListener("click", (e) => {
+        if (e.target.id === "sellModal") {
+            maincontainer.style.display = "none";
+        }
+    }
+    );
     
     const fullScreenModal = document.createElement("div");
     fullScreenModal.classList.add("fullscreenModal");
-    maincontainer.style.top = "135px";
+    fullScreenModal.id = "fullscreenModal";
+
+
     maincontainer.appendChild(fullScreenModal);
 
     const xout = document.createElement("p");
