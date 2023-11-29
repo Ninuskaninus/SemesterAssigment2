@@ -15,9 +15,11 @@ export function myProfileInfo(){
     userAvatar.style.backgroundImage = "url(" + myProfileData.avatar+")";
 
     const avatarBtn = document.getElementById("avatarBtn");
-    avatarBtn.addEventListener("click", function(){
+    avatarBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         avatarModal();
     });
+    
     createProfileCards();
 
 }
