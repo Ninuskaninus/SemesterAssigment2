@@ -12,8 +12,6 @@ export function bidModalPreview(thisListing){
     });
 
     const listing = thisListing;
-    console.log(listing);
-
 
     const xOut = document.createElement("p");
     xOut.classList.add("x-out");

@@ -6,10 +6,17 @@ const accessToken = localStorage.getItem("token");
 
 export function errorLoginModal() {
   const mainContainer = document.getElementById("loginModal");
+  mainContainer.addEventListener("click", (e) => {
+    if (e.target.id === "loginModal") {
+      mainContainer.style.display = "none";
+    }
+  });
 
   const fullScreenModal = document.createElement("div");
   fullScreenModal.classList.add("fullscreenModal");
-  fullScreenModal.style.top = "85px";
+  fullScreenModal.id = "fullscreenModal";
+
+
   mainContainer.appendChild(fullScreenModal);
 
   const xout = document.createElement("p");
@@ -17,7 +24,7 @@ export function errorLoginModal() {
   xout.innerText = "Close";
   mainContainer.appendChild(xout);
   xout.addEventListener("click", () => {
-    mainContainer.remove();
+    mainContainer.style.display = "none";
   });
 
   const modal = document.createElement("div");
@@ -35,6 +42,7 @@ export function errorLoginModal() {
 
   const errorText = document.createElement("h2");
   errorText.id = "loginErrorText";
+
   errorText.innerText = "You have to be logged in to make a bid or sell an item!";
   fullscreenForm.appendChild(errorText);
 
