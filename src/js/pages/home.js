@@ -7,6 +7,7 @@ import { recentUploads } from "../design/recent-uploads.js";
 import { errorLoginModal } from "../design/errorLoginModal.js";
 import { createUserModal } from "../design/createUserModal.js";
 import { sellModal } from "../design/sellModal.js";
+import { bidModal } from "../design/bidModal.js";
 
 export function htmlDesign() {
   secondaryNavbar();
@@ -18,4 +19,5 @@ export function htmlDesign() {
   errorLoginModal();
   createUserModal();
   sellModal();
+  bidModal();
 }

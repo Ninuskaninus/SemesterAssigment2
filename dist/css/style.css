@@ -12073,9 +12073,24 @@ a {
 .item-card {
   width: 293px;
   min-height: 240px;
+  position: relative;
   border-radius: 41px;
   background: #343434;
   box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.yourUploadContainer {
+  background-color: #f0ad4e;
+  border-radius: 41px;
+  padding: 10px;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  display: none;
+}
+.yourUploadContainer p {
+  margin: 0;
+  color: #212121;
 }
 
 .item-img {
@@ -12416,8 +12431,8 @@ nav {
 }
 
 .fullscreenModal {
-  position: absolute;
-  top: 85px;
+  position: fixed;
+  top: 0;
   height: 100%;
   width: 100%;
   background-color: rgba(33, 33, 33, 0.6901960784);
@@ -12436,7 +12451,7 @@ nav {
 }
 
 .fullscreenModalContent {
-  border: 3px solid #6b65ae;
+  border: 1px solid #6b65ae;
   background: #1a1a1a;
   width: 70%;
   max-width: 650px;
@@ -12768,6 +12783,67 @@ nav {
 .form-floating > :disabled ~ label::after,
 .form-floating > .form-control:disabled ~ label::after {
   background-color: var(--bs-secondary-bg);
+}
+
+.bidForm {
+  display: flex;
+  align-items: baseline;
+  padding: 50px;
+  width: 100%;
+}
+.bidForm span {
+  color: #6B65AD;
+  font-weight: 700;
+}
+.bidForm h1, .bidForm .h1 {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 375px) {
+  .bidForm {
+    padding: 20px;
+  }
+}
+.itemBidContainer {
+  margin-top: 30px;
+  width: 100%;
+}
+.itemBidContainer input {
+  background-color: #343434;
+  outline: none;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  height: 45px;
+  border-radius: 15px;
+  padding-left: 20px;
+}
+.itemBidContainer input:focus {
+  background-color: #343434;
+  color: #fff;
+}
+
+.itemBtnContainer {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-id {
+  color: #fff;
+  font-size: 0.6rem;
+  margin-top: 5px;
+}
+
+.itemImg {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .previewMain {

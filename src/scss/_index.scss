@@ -181,10 +181,26 @@ display: none;
 .item-card {
   width: 293px;
   min-height: 240px;
-
+  position: relative;
   border-radius: 41px;
   background: $gray-600;
   box-shadow: 6px 9px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.yourUploadContainer{
+  background-color: #f0ad4e;
+  border-radius: 41px;
+  padding: 10px;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  display: none;
+
+  & p {
+    margin: 0;
+    color: $primary;
+  }
+
 }
 
 .item-img {
