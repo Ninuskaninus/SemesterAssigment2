@@ -7,9 +7,6 @@ const myBids = getMyBids();
 const allBids = myBids.flatMap(listing => listing.bids);
 const username = localStorage.getItem("username");
 
-console.log(myListings);
-
-
 export function createProfileCards(){
     const cardsContainer = document.getElementById("cardsContainer");
 
@@ -62,19 +59,19 @@ export function createProfileCards(){
         
         myBids.forEach(bid => {
             const bidCard = document.createElement("a");
-            bidCard.classList.add("bidContainer");
+            bidCard.classList.add("bidContainer", "container");
             bidCard.href = "/preview/index.html?id=" + bid.id;
             bidsContainer.appendChild(bidCard);
 
             const bidTitle = document.createElement("div");
-            bidTitle.classList.add("bidTitle");
+            bidTitle.classList.add("bidTitle", "col-sm");
             bidCard.appendChild(bidTitle);
             const bidTitleText = document.createElement("p");
             bidTitleText.innerHTML = bid.title;
             bidTitle.appendChild(bidTitleText);
 
             const latestBid = document.createElement("div");
-            latestBid.classList.add("latestBid");
+            latestBid.classList.add("latestBid", "col-sm");
             bidCard.appendChild(latestBid);
 
             const latestBidText = document.createElement("p");
@@ -102,6 +99,7 @@ export function createProfileCards(){
 
             const timeLeft = document.createElement("p");
             timeLeft.innerHTML = deadlineDateFormatted;
+            timeLeft.classList.add("col-sm");
             if(bid.endsAt === "Ended"){
                 timeLeft.style.color = "red";
                 timeLeft.innerHTML = "Ended";

@@ -13292,6 +13292,7 @@ p {
 .bidContainer p {
   font-size: 0.8rem;
   font-weight: 400;
+  width: auto;
 }
 .bidContainer span {
   font-size: 0.8rem;
