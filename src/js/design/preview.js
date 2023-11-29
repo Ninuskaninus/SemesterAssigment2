@@ -1,9 +1,11 @@
 import { getListings } from "../API/GET/getListings.js";
 import { errorLoginModal } from "../design/errorLoginModal.js";
+import { bidModalTrigger } from "../modals/bidModalTrigger.js";
+import { bidModalPreview } from "../design/bidModalPreview.js";
 
 const currentUrl = new URL(window.location.href);
 const thisID = currentUrl.searchParams.get("id");
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("token");
 const username = localStorage.getItem("username");
 
 let thisListing;
@@ -45,7 +47,7 @@ export function previewListings() {
     if (!accessToken) {
       errorLoginModal();
     } else {
-      console.log("bid");
+      bidModalTrigger(thisListing);
     }
   });
 
@@ -60,33 +62,23 @@ export function previewListings() {
       previewGalleryItem.style.backgroundImage = `url(${media})`;
   
       previewGalleryItem.addEventListener("click", () => {
-        // Set background image of previewMain
         previewMain.style.backgroundImage = `url(${media})`;
-  
-        // Scroll to previewMain
         previewMain.scrollIntoView({ behavior: "smooth" });
       });
   
       previewGallery.appendChild(previewGalleryItem);
-  
-      // Display the first image on load
       if (index === 0) {
         previewMain.style.backgroundImage = `url(${media})`;
       }
     });
   
-    // If there is only one image, hide the previewGallery
     if (thisListing.media.length === 1) {
       previewGallery.style.display = "none";
     }
   } else {
-    // If there are no images, hide the previewGallery
     previewGallery.style.display = "none";
   }
   
-  
-
-
 
   if (!thisListing) return;
 
@@ -138,5 +130,8 @@ export function previewListings() {
       bidItem.classList.remove("myBid");
     }
   });
+
+  bidModalPreview(thisListing);
+
 }
 

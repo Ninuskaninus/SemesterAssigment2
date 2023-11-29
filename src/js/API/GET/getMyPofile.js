@@ -13,7 +13,6 @@ export async function myProfile() {
       },
     });
     const data = await response.json();
-    console.log(data);
     const myProfileData = {
       avatar: data.avatar,
       email: data.email,

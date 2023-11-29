@@ -1,5 +1,7 @@
 import { getListings } from "../API/GET/getListings.js";
+import { bidModalTrigger } from "../modals/bidModalTrigger.js";
 import { errorLogin } from "../modals/errorLogin.js";
+
 
 const accessToken = localStorage.getItem("token");
 
@@ -8,6 +10,7 @@ export async function createCards(recentUploadsCard) {
   const listings = await getListings();
   listings.sort((a, b) => new Date(b.updated) - new Date(a.updated));
   const filteredListings = listings.filter((listing) => listing.title !== "tester");
+
 
   filteredListings.forEach((listing) => {
     const deadline = new Date(listing.endsAt) ;
@@ -41,8 +44,16 @@ export async function createCards(recentUploadsCard) {
 
       const card = document.createElement("div");
       card.classList.add("item-card");
-      card.id = listing.id;
       recentUploadsCard.appendChild(card);
+
+      const yourUploadContainer = document.createElement("div");
+      yourUploadContainer.classList.add("yourUploadContainer");
+      card.appendChild(yourUploadContainer);
+
+      const yourUpload = document.createElement("p");
+      yourUpload.classList.add("yourUpload");
+      yourUpload.innerHTML = "Your listing";
+      yourUploadContainer.appendChild(yourUpload);
 
       const cardImage = document.createElement("div");
       cardImage.classList.add("item-img");
@@ -94,7 +105,19 @@ export async function createCards(recentUploadsCard) {
 
       const cardPrice = document.createElement("h3");
       cardPrice.classList.add("text-light");
-      cardPrice.innerHTML = listing._count.bids + " bids";
+
+
+      const bids = listing.bids;
+      const bidsArray = Object.values(bids);
+      const bidsArraySorted = [...bidsArray].sort((a, b) => (b.amount || 0) - (a.amount || 0));
+      const highestBid = bidsArraySorted[0] && bidsArraySorted[0].amount;
+      
+      if (bidsArray.length === 0 || highestBid === undefined) {
+        cardPrice.innerHTML = "0 Credit";
+      } else {
+        cardPrice.innerHTML = highestBid + " Credit";
+      }
+
       cardContent.appendChild(cardPrice);
 
       const cardButtons = document.createElement("div");
@@ -107,13 +130,22 @@ export async function createCards(recentUploadsCard) {
       cardInfoLink.href = "preview/index.html?id=" + listing.id;
       cardButtons.appendChild(cardInfoLink);
 
-      const cardBidLink = document.createElement("a");
-      cardBidLink.innerHTML = "Bid on this";
-      cardBidLink.href = "#";
-      cardBidLink.classList.add("secondaryBtn");
+      const cardBidLink = document.createElement("button");
+
+      cardBidLink.dataset.id = listing.id;
+      if(listing.seller.name === localStorage.getItem("username")){
+        cardBidLink.style.display = "none";
+        card.style.border = "2px solid #f0ad4e";
+        yourUploadContainer.style.display = "block";
+      } else {
+        cardBidLink.innerHTML = "Bid on this";
+        cardBidLink.disabled = false;
+      }
+
+      cardBidLink.classList.add("secondaryBtn", "biddingBtn");
       cardBidLink.addEventListener("click", () => {
         if (accessToken) {
-          console.log("Bid on this");
+          bidModalTrigger();
         } else {
           errorLogin();
         }
