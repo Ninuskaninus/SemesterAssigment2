@@ -12545,12 +12545,18 @@ nav {
   min-width: 150px;
 }
 
-@media screen and (max-width: 579px) {
+@media screen and (max-width: 390px) {
+  .fullscreenModal {
+    padding-top: 0;
+    position: absolute;
+  }
   .fullscreenModalContent {
     width: 90%;
     max-width: 90%;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 20px;
+    padding-top: 35px;
   }
   .fullScreenModalBtn {
     flex-direction: column;
@@ -12562,6 +12568,21 @@ nav {
     width: 100%;
     max-width: 100%;
     padding: 10px;
+  }
+  .fullscreenForm h2, .fullscreenForm .h2 {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+  }
+  .fullscreenForm input {
+    padding: 10px;
+  }
+  .fullscreenForm img {
+    max-height: 40px;
+  }
+  .x-out {
+    top: 20px;
+    right: 20px;
   }
 }
 .tags {
