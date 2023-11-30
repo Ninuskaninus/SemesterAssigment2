@@ -278,3 +278,15 @@ p {
   width: 20px;
   justify-content: center;
 }
+
+.not-logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray-600;
+  color: $white;
+  margin-top: 10px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 50px;
+}

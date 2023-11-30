@@ -1,32 +1,25 @@
 import { getListings } from "../API/GET/getListings.js";
 import { bidModalTrigger } from "../modals/bidModalTrigger.js";
 import { errorLogin } from "../modals/errorLogin.js";
+import {searchBar} from "../sorting/search.js";
 
 const accessToken = localStorage.getItem("token");
+
 export async function createCards(recentUploadsCard) {
   const listings = await getListings();
   listings.sort((a, b) => new Date(b.updated) - new Date(a.updated));
-  const filteredListings = listings.filter(
-    (listing) => listing.title !== "tester"
+  
+  const searchResults = searchBar();
+  const selectedListing = searchResults > 0 ? searchResults : listings;
+
+  selectedListing.forEach((listing) => {
+    createCards(recentUploadsCard, listing);
+  }
   );
 
-  filteredListings.forEach((listing) => {
+  function createCards(recentUploadsCard, listing) {
     const deadline = new Date(listing.endsAt);
-    const deadlineFormatted = deadline.toLocaleDateString("no-NO", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
     const now = new Date();
-    const nowFormatted = now.toLocaleDateString("no-NO", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
 
     const listingDeadline = new Date(listing.endsAt);
     const listingDeadlineFormatted = listingDeadline.toLocaleDateString(
@@ -167,5 +160,5 @@ export async function createCards(recentUploadsCard) {
 
     updateCardLayout();
     window.addEventListener("resize", updateCardLayout);
-  });
+  };
 }

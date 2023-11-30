@@ -2595,6 +2595,7 @@ textarea.form-control-lg {
   pointer-events: none;
   border: var(--bs-border-width) solid transparent;
   transform-origin: 0 0;
+  color: #fff;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2629,7 +2630,7 @@ textarea.form-control-lg {
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
 .form-floating > .form-control-plaintext ~ label,
 .form-floating > .form-select ~ label {
-  color: rgba(var(--bs-body-color-rgb), 0.65);
+  color: #fff;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 .form-floating > .form-control:focus ~ label::after,
@@ -2641,7 +2642,7 @@ textarea.form-control-lg {
   z-index: -1;
   height: 1.5em;
   content: "";
-  background-color: var(--bs-body-bg);
+  background-color: none;
   border-radius: var(--bs-border-radius);
 }
 .form-floating > .form-control:-webkit-autofill ~ label {
@@ -11952,6 +11953,7 @@ a {
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .tags-card {
@@ -12011,7 +12013,7 @@ a {
 
 .searchBar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -13148,6 +13150,18 @@ p {
   justify-content: center;
 }
 
+.not-logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #343434;
+  color: #fff;
+  margin-top: 10px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 50px;
+}
+
 #profileMain {
   flex-direction: column;
 }
@@ -13327,6 +13341,46 @@ p {
 
 .otherBid {
   color: #F04D23;
+}
+
+.search-result-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.search-result-image {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.search-results {
+  min-width: 100%;
+  margin-top: 30px;
+  display: none;
+}
+
+.no-result {
+  display: flex;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #343434;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 90px;
 }
 
 /*# sourceMappingURL=style.css.map */
