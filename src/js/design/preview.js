@@ -109,29 +109,53 @@ export function previewListings() {
   bidDivider.classList.add("whiteDivider");
   bidListElement.appendChild(bidDivider);
 
-  thisBids.forEach((bid) => {
-    const bidItem = document.createElement("div");
-    bidItem.classList.add("bid");
-    bidListElement.appendChild(bidItem);
-
-    const bidUsername = document.createElement("p");
-    bidUsername.innerHTML = bid.bidderName === username ? "You" : bid.bidderName;
-    bidUsername.style.color = bid.bidderName === username ? "green" : "";
-
-    bidItem.appendChild(bidUsername);
-
-    const bidAmount = document.createElement("p");
-    bidAmount.innerHTML = `${bid.amount} credits`;
-    bidItem.appendChild(bidAmount);
-
-    if (username && bid.bidderName === username) {
-      bidItem.classList.add("myBid");
+  if (accessToken) {
+    if (thisBids.length > 0) {
+      thisBids.forEach((bid) => {
+        const bidItem = document.createElement("div");
+        bidItem.classList.add("bid");
+        bidListElement.appendChild(bidItem);
+  
+        const bidUsername = document.createElement("p");
+        bidUsername.innerHTML = bid.bidderName === username ? "You" : bid.bidderName;
+        bidUsername.style.color = bid.bidderName === username ? "green" : "";
+  
+        bidItem.appendChild(bidUsername);
+  
+        const bidAmount = document.createElement("p");
+        bidAmount.innerHTML = `${bid.amount} credits`;
+        bidItem.appendChild(bidAmount);
+  
+        if (username && bid.bidderName === username) {
+          bidItem.classList.add("myBid");
+        } else {
+          bidItem.classList.remove("myBid");
+        }
+      });
     } else {
-      bidItem.classList.remove("myBid");
+      // If there are no bids, show a message indicating that
+      const noBidsMessage = document.createElement("div");
+      noBidsMessage.classList.add("no-bids");
+      bidListElement.appendChild(noBidsMessage);
+  
+      const noBidsText = document.createElement("p");
+      noBidsText.innerHTML = "No bids available.";
+      noBidsMessage.appendChild(noBidsText);
     }
-  });
-
+  } else {
+    // If the user is not logged in, show the login message
+    const errorLoginBid = document.createElement("div");
+    errorLoginBid.classList.add("not-logged-in");
+    bidListElement.appendChild(errorLoginBid);
+  
+    const errorLoginBidText = document.createElement("p");
+    errorLoginBidText.innerHTML = "Log in to see bids";
+    errorLoginBid.appendChild(errorLoginBidText);
+  }
+  
   bidModalPreview(thisListing);
+  
 
 }
+
 

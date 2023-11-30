@@ -35,24 +35,27 @@ export async function searchField() {
   resultTitle.innerHTML = "Search Results";
   searchResults.appendChild(resultTitle);
 
+
+
   searchButton.addEventListener("click", async () => {
     const searchValue = searchInput.value;
     const allListings = await getListings();
     searchResults.innerHTML = "";
     searchResults.style.display = "block";
-    
+
+    // Check if the result is an array and if it's not empty
     if (Array.isArray(allListings)) {
       const searchResult = allListings.filter((listing) =>
         listing.title.toLowerCase().includes(searchValue.toLowerCase())
       );
-      console.log(searchResult);
 
-      searchResults.innerHTML = "";
+      console.log("array: ", searchResult);
 
       // Iterate over search results and create elements
       searchResult.forEach((listing) => {
-        const searchResultItem = document.createElement("div");
+        const searchResultItem = document.createElement("a");
         searchResultItem.classList.add("search-result-item");
+        searchResultItem.href = `/preview/index.html?id=${listing.id}`;
         searchResults.appendChild(searchResultItem);
 
         const searchResultImage = document.createElement("div");
@@ -64,15 +67,30 @@ export async function searchField() {
         searchResultTitle.classList.add("search-result-title");
         searchResultTitle.innerHTML = listing.title;
         searchResultItem.appendChild(searchResultTitle);
-
-        const searchResultBtn = document.createElement("button");
-        searchResultBtn.classList.add("mainBtn", "btn");
-        searchResultBtn.innerHTML = "View";
-        searchResultItem.appendChild(searchResultBtn);
-
       });
+
+      // Check if there are no results
+      if (searchResult.length === 0) {
+        searchResults.innerHTML = "";
+        const noResult = document.createElement("p");
+        noResult.innerHTML = "No results found";
+        searchResults.appendChild(noResult);
+      }
     } else {
-      console.error("Invalid data received from getListings");
+      // Handle the case when allListings is not an array
+      searchResults.innerHTML = "";
+      const errorResult = document.createElement("p");
+      errorResult.innerHTML = "Error retrieving results";
+      searchResults.appendChild(errorResult);
     }
   });
+
+  searchInput.addEventListener("keyup", async (event) => {
+    if(event.key==="Enter"){
+      event.preventDefault();
+      searchButton.click();
+    }
+  });
+
+
 }
