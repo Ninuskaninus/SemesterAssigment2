@@ -55,6 +55,7 @@ export function sellModal(){
     title.type = "text";
     title.id = "sellTitle";
     title.placeholder = "Title";
+    title.required = true;
     title.classList.add("form-control");
     formFloat1.appendChild(title);
 
@@ -70,6 +71,7 @@ export function sellModal(){
     const description = document.createElement("textarea");
     description.id = "sellDescription";
     description.placeholder = "Description";
+    description.required = true;
     description.classList.add("form-control");
     formFloat2.appendChild(description);
 
@@ -148,6 +150,7 @@ const deadline = document.createElement("input");
 deadline.type = "datetime-local";
 deadline.id = "sellDeadline";
 deadline.placeholder = "Deadline";
+deadline.required = true;
 deadline.classList.add("form-control");
 
 formFloat4.appendChild(deadline);
@@ -233,18 +236,55 @@ sellBtn.innerText = "Publish listing";
 sellBtn.classList.add("btn", "mainBtn");
 buttonContainer.appendChild(sellBtn);
 
-sellBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    addListing();
-    setInterval(() => {
-        sellBtn.style.backgroundColor = "green";
-        sellBtn.innerText = "Listing added!";
-        setTimeout(() => {
-            maincontainer.style.display = "none";
-        }, 1000);
+title.addEventListener("input", () => removeErrorStyles(title, titleLabel));
+description.addEventListener("input", () => removeErrorStyles(description, descriptionLabel));
+deadline.addEventListener("input", () => removeErrorStyles(deadline, deadlineLabel));
 
-    }, 1000);
-});   
+sellBtn.addEventListener("click", (e) => {
+  if (title.value.trim() === "") {
+    applyErrorStyles(title, "Please enter a title", titleLabel);
+    return;
+  }
+
+  if (description.value.trim() === "") {
+    applyErrorStyles(description, "Please enter a description", descriptionLabel);
+    return;
+  }
+
+  if (deadline.value.trim() === "") {
+    applyErrorStyles(deadline, "Please enter a deadline", deadlineLabel);
+    return;
+  }
+
+  else {
+    e.preventDefault();
+    setInterval(() => {
+      fullScreenModal.style.border = "1px solid green";
+      sellBtn.style.backgroundColor = "green";
+      sellBtn.innerText = "Listing added";
+    }, 2000);
+    addListing(title.value, description.value, tagsInput, deadline.value, imageUrlsInput);
+    maincontainer.style.display = "none";
+  }
+});
+
+function applyErrorStyles(inputField, placeholderText, labelElement) {
+  inputField.placeholder = placeholderText;
+  labelElement.innerText = `${labelElement.innerText} *`;
+  inputField.style.color = "red";
+  inputField.classList.add("error");
+  inputField.style.border = "1px solid red";
+}
+
+function removeErrorStyles(inputField, labelElement) {
+  // Reset styles when user starts typing
+  inputField.placeholder = "Title"; // Replace with default placeholder
+  labelElement.innerText = "Title"; // Replace with default label text
+  inputField.style.color = ""; // Reset color
+  inputField.classList.remove("error"); // Remove error class
+  inputField.style.border = ""; // Reset border
+}
+
 
 }
 

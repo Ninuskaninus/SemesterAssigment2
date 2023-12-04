@@ -17,6 +17,8 @@ export async function createCards(recentUploadsCard) {
   }
   );
 
+  console.log(selectedListing);
+
   function createCards(recentUploadsCard, listing) {
     const deadline = new Date(listing.endsAt);
     const now = new Date();

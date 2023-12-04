@@ -14,8 +14,6 @@ export function createProfileCards(){
     myListings.forEach(listing => {
     const listingID = listing.id;
 
-    console.log(myListings);
-
         const card = document.createElement("div");
         card.classList.add("mysales-card");
         card.id = listing.id;

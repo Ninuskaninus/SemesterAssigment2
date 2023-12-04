@@ -13463,4 +13463,13 @@ p {
   height: 90px;
 }
 
+.inputError {
+  color: #F04D23;
+  border: 2px solid #F04D23;
+  background-color: aqua;
+}
+.inputError::placeholder {
+  color: #F04D23;
+}
+
 /*# sourceMappingURL=style.css.map */
