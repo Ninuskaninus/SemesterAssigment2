@@ -1,7 +1,6 @@
 import { getListings } from "../API/GET/getListings.js";
 import { placeBid } from "../API/POST/bid.js";
-const listing = await getListings();
-const listingBtn = document.querySelectorAll(".biddingBtn");
+
 
 document.addEventListener("click", async (e) => {
     if (e.target.classList.contains("biddingBtn")) {
@@ -12,10 +11,15 @@ document.addEventListener("click", async (e) => {
         const bids = selectedListing.bids;
         const bidsArray = Object.values(bids);
         const bidsArraySorted = [...bidsArray].sort((a, b) => b.amount - a.amount);
-        const highestBid = bidsArraySorted[0].amount;
+        const highestBid = bidsArraySorted.length > 0 ? bidsArraySorted[0].amount : 0;
         
     bidModal(selectedListing);
     const modal = document.getElementById("bidModal");
+    modal.addEventListener("click", (e) => {
+        if (e.target.id === "bidModal") {
+            modal.style.display = "none";
+        }
+    });
     modal.innerHTML = "";
     modal.addEventListener("click", (e) => {
         if (e.target.id === "bidModal") {
@@ -96,14 +100,15 @@ document.addEventListener("click", async (e) => {
         if (itemBidInput.value < highestBid) {
             itemBidHead.classList.add("text-danger");
             itemBidHead.innerHTML = "Bid must be higher than current price";
+            modalContent.style.border = "2px solid red";
         } else {
             e.preventDefault();
             const bidAmount = itemBidInput.value;
             placeBid(selectedListing.id, bidAmount);
-            console.log(selectedListing);
             setInterval(() => {
                 itemBtn.innerHTML = "Bid placed!";
                 itemBtn.style.backgroundColor = "green";
+                modalContent.style.border = "2px solid green";
             }, 1000);
             setInterval(() => {
                 window.location.reload();

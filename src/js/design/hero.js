@@ -7,6 +7,10 @@ export function heroBanner() {
   hero.classList.add("hero");
   main.appendChild(hero);
 
+  const heroFilter = document.createElement("div");
+  heroFilter.classList.add("heroFilter");
+  hero.appendChild(heroFilter);
+
   const heroLogo = document.createElement("img");
   heroLogo.src = "/src/assets/heroLogo.png";
   heroLogo.alt = "Hero Logo";

@@ -6,7 +6,7 @@ const allVehicleTags = [
     "ATV", "snowmobile", "jet ski", "golf cart", "go-kart",
     "electric car", "electric scooter", "electric bike",
     "vintage car", "classic car", "antique car", "muscle car",
-    "delivery van", "cargo van", "bus", "taxi", "limousine"
+    "delivery van", "cargo van", "bus", "taxi", "limousine", "car", "bus", "truck"
   ];
   
 export default allVehicleTags;
