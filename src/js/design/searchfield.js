@@ -50,7 +50,6 @@ export async function searchField() {
       listing.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase()))
     );
 
-      console.log("array: ", searchResult);
 
       searchResult.forEach((listing) => {
         const searchResultItem = document.createElement("a");
@@ -69,7 +68,6 @@ export async function searchField() {
         searchResultItem.appendChild(searchResultTitle);
       });
 
-      // Check if there are no results
       if (searchResult.length === 0) {
         searchResults.innerHTML = "";
         const noResult = document.createElement("p");
