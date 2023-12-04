@@ -95,6 +95,7 @@ export function popularTags() {
    * @param {Array} filteredListings - The array of filtered listings to display.
    * @returns {void}
    */
+  let isListingsVisible = false;
   function displayFilteredListings(filteredListings) {
     tagsSearchContainer.innerHTML = "";
 
@@ -118,6 +119,14 @@ export function popularTags() {
           window.location.href = `/preview/index.html?id=${listing.id}`;
         });
       });
+
+      if (isListingsVisible) {
+        tagsSearchContainer.innerHTML = "";
+        isListingsVisible = false;
+      } else {
+        isListingsVisible = true;
+      }
+
     } else {
       const noResult = document.createElement("div");
      noResult.classList.add("no-result");

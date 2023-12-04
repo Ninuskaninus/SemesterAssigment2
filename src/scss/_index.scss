@@ -22,6 +22,13 @@ main {
   }
 }
 
+@media screen and (max-width: 320px) {
+  .mainContainer {
+    padding: 0 10px;
+  }
+  
+}
+
 a{
   text-decoration: none;
 }
@@ -35,6 +42,22 @@ a{
   align-items: center;
   gap: 20px;
   width: 100%;
+  position: relative;
+  & img, h1, h2, p, button{
+    z-index: 1;
+  }
+
+
+}
+
+.heroFilter{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
+  filter: grayscale(50%); /* Apply the desired filter */
 }
 
 .popularTags {

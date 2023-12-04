@@ -77,16 +77,17 @@ export async function createCards(recentUploadsCard) {
     cardDeadline.innerHTML = "Deadline: " + listingDeadlineFormatted;
     if (listingDeadline < now) {
       cardDeadline.innerHTML = "Ended: " + listingDeadlineFormatted;
-      cardDeadline.classList.add("text-danger");
+      cardDeadline.classList.add("text-danger", "mb-4");
     } else {
       cardDeadline.innerHTML = "Deadline: " + listingDeadlineFormatted;
-      cardDeadline.classList.add("text-success");
+      cardDeadline.classList.add("text-light", "mb-4");
     }
 
     cardContent.appendChild(cardDeadline);
 
     const cardTitle = document.createElement("h3");
     cardTitle.innerHTML = listing.title;
+    cardTitle.style.textOverflow = "ellipsis";
     if (listing.title.length > 25) {
       cardTitle.innerHTML = listing.title.slice(0, 25) + " " + "...";
     }

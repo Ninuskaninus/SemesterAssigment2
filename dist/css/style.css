@@ -11923,6 +11923,11 @@ main {
     padding: 0 30px;
   }
 }
+@media screen and (max-width: 320px) {
+  .mainContainer {
+    padding: 0 10px;
+  }
+}
 a {
   text-decoration: none;
 }
@@ -11936,6 +11941,20 @@ a {
   align-items: center;
   gap: 20px;
   width: 100%;
+  position: relative;
+}
+.hero img, .hero h1, .hero .h1, .hero h2, .hero .h2, .hero p, .hero button {
+  z-index: 1;
+}
+
+.heroFilter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
+  filter: grayscale(50%); /* Apply the desired filter */
 }
 
 .popularTags {
@@ -12432,10 +12451,19 @@ nav {
   padding: 5px 20px;
 }
 
+.confirmBtn {
+  background-color: #509041;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 5px 20px;
+}
+
 .fullscreenModal {
   position: fixed;
   top: 0;
-  height: 100%;
+  left: 0;
+  min-height: 100vh;
   width: 100%;
   background-color: rgba(33, 33, 33, 0.6901960784);
   z-index: 1000;
@@ -12443,6 +12471,7 @@ nav {
   justify-content: center;
   align-items: top;
   padding-top: 80px;
+  overflow-y: auto; /* Allow vertical scrolling within the modal if content exceeds viewport height */
 }
 
 .x-out {
@@ -12550,7 +12579,7 @@ nav {
 @media screen and (max-width: 560px) {
   .fullscreenModal {
     padding-top: 0;
-    position: absolute;
+    position: fixed;
   }
   .fullscreenModalContent {
     width: 90%;
@@ -12869,6 +12898,39 @@ nav {
   background-size: cover;
   border-radius: 15px;
   margin-bottom: 20px;
+}
+
+.deleteModal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(26, 26, 26, 0.8823529412);
+  z-index: 1000;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteModalHeader {
+  padding: 5px;
+  text-align: center;
+}
+
+.deleteModalContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.deleteModalBtnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .previewMain {
@@ -13220,6 +13282,7 @@ p {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .mysales-img {
@@ -13238,6 +13301,23 @@ p {
   position: relative;
   min-height: 100px;
   width: 100%;
+}
+
+.deleteBtn {
+  position: absolute;
+  outline: none;
+  border: none;
+  top: 5px;
+  right: 5px;
+  color: #F04D23;
+  padding: 5px 10px;
+  border-radius: 25px;
+  z-index: 1;
+  background-color: transparent;
+}
+.deleteBtn p {
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 .mysales-content {

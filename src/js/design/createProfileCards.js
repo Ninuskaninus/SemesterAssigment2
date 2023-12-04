@@ -1,5 +1,6 @@
 import {myProfile} from "../API/GET/getMyPofile.js";
 import {getMyBids} from "../information/getMyBids.js";
+import { deletePostModal } from "../modals/deletePost.js";
 
 const myProfileData = await myProfile();
 const myListings = myProfileData.allListings;
@@ -8,9 +9,13 @@ const allBids = myBids.flatMap(listing => listing.bids);
 const username = localStorage.getItem("username");
 
 export function createProfileCards(){
-    const cardsContainer = document.getElementById("cardsContainer");
+    const cardsContainer = document.getElementById("cardsContainer");;
 
     myListings.forEach(listing => {
+    const listingID = listing.id;
+
+    console.log(myListings);
+
         const card = document.createElement("div");
         card.classList.add("mysales-card");
         card.id = listing.id;
@@ -20,6 +25,19 @@ export function createProfileCards(){
         cardImage.classList.add("mysales-img");
         cardImage.style.backgroundImage = "url(" + listing.media[0] + ")";
         card.appendChild(cardImage);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("deleteBtn");
+        deleteBtn.id = listingID;
+        deleteBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            deletePostModal(listingID);
+        });
+        card.appendChild(deleteBtn);
+
+        const deleteBtnIcon = document.createElement("img");
+        deleteBtnIcon.src = "/src/assets/delete.png";
+        deleteBtn.appendChild(deleteBtnIcon);
 
         const cardContentContainer = document.createElement("div");
         cardContentContainer.classList.add("mysale-info-container");

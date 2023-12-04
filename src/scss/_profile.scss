@@ -57,6 +57,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .mysales-img{
@@ -75,6 +76,24 @@ padding: 20px;
 position: relative;
 min-height: 100px;
 width: 100%;
+}
+
+.deleteBtn{
+    position: absolute;
+    outline: none;
+    border: none;
+    top: 5px;
+    right: 5px;
+    color: $red;
+    padding: 5px 10px;
+    border-radius: 25px;
+    & p{
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+
+    z-index: 1;
+    background-color: transparent;
 }
 
 .mysales-content{
