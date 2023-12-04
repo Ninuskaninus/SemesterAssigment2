@@ -236,55 +236,18 @@ sellBtn.innerText = "Publish listing";
 sellBtn.classList.add("btn", "mainBtn");
 buttonContainer.appendChild(sellBtn);
 
-title.addEventListener("input", () => removeErrorStyles(title, titleLabel));
-description.addEventListener("input", () => removeErrorStyles(description, descriptionLabel));
-deadline.addEventListener("input", () => removeErrorStyles(deadline, deadlineLabel));
-
 sellBtn.addEventListener("click", (e) => {
-  if (title.value.trim() === "") {
-    applyErrorStyles(title, "Please enter a title", titleLabel);
-    return;
-  }
-
-  if (description.value.trim() === "") {
-    applyErrorStyles(description, "Please enter a description", descriptionLabel);
-    return;
-  }
-
-  if (deadline.value.trim() === "") {
-    applyErrorStyles(deadline, "Please enter a deadline", deadlineLabel);
-    return;
-  }
-
-  else {
     e.preventDefault();
+    addListing();
     setInterval(() => {
-      fullScreenModal.style.border = "1px solid green";
-      sellBtn.style.backgroundColor = "green";
-      sellBtn.innerText = "Listing added";
-    }, 2000);
-    addListing(title.value, description.value, tagsInput, deadline.value, imageUrlsInput);
-    maincontainer.style.display = "none";
-  }
-});
+        sellBtn.style.backgroundColor = "green";
+        sellBtn.innerText = "Listing added!";
+        setTimeout(() => {
+            maincontainer.style.display = "none";
+        }, 1000);
 
-function applyErrorStyles(inputField, placeholderText, labelElement) {
-  inputField.placeholder = placeholderText;
-  labelElement.innerText = `${labelElement.innerText} *`;
-  inputField.style.color = "red";
-  inputField.classList.add("error");
-  inputField.style.border = "1px solid red";
-}
-
-function removeErrorStyles(inputField, labelElement) {
-  // Reset styles when user starts typing
-  inputField.placeholder = "Title"; // Replace with default placeholder
-  labelElement.innerText = "Title"; // Replace with default label text
-  inputField.style.color = ""; // Reset color
-  inputField.classList.remove("error"); // Remove error class
-  inputField.style.border = ""; // Reset border
-}
-
+    }, 1000);
+});   
 
 }
 

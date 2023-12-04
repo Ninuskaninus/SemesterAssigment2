@@ -1,12 +1,17 @@
 import {myProfile} from "../API/GET/getMyPofile.js";
 import {getMyBids} from "../information/getMyBids.js";
 import { deletePostModal } from "../modals/deletePost.js";
+import { getListings } from "../API/GET/getListings.js";
+import {getMyListings} from "../API/GET/getMyListings.js";
 
-const myProfileData = await myProfile();
-const myListings = myProfileData.allListings;
+
+const myListings = await getMyListings();
 const myBids = getMyBids();
 const allBids = myBids.flatMap(listing => listing.bids);
 const username = localStorage.getItem("username");
+
+console.log(myListings);
+
 
 export function createProfileCards(){
     const cardsContainer = document.getElementById("cardsContainer");;
@@ -14,10 +19,14 @@ export function createProfileCards(){
     myListings.forEach(listing => {
     const listingID = listing.id;
 
+        const linkContainer = document.createElement("a");
+        linkContainer.href = "/preview/index.html?id=" + listingID;
+        cardsContainer.appendChild(linkContainer);
+
         const card = document.createElement("div");
         card.classList.add("mysales-card");
         card.id = listing.id;
-        cardsContainer.appendChild(card);
+        linkContainer.appendChild(card);
 
         const cardImage = document.createElement("div");
         cardImage.classList.add("mysales-img");
@@ -50,6 +59,7 @@ export function createProfileCards(){
         cardContent.appendChild(cardTitle);
 
         const timeLeft = document.createElement("p");
+        timeLeft.classList.add("text-light");
         const deadline = listing.endsAt;
         const deadlineDate = new Date(deadline);
         const deadlineDateFormatted = deadlineDate.toLocaleDateString("no-NO", {
@@ -72,37 +82,43 @@ export function createProfileCards(){
     });
 
         const bidsContainer = document.getElementById("bidsContainer");
+
         
         myBids.forEach(bid => {
+            const sortedBids = bid.bids.sort((a, b) => b.amount - a.amount);
+        
             const bidCard = document.createElement("a");
             bidCard.classList.add("bidContainer", "container");
             bidCard.href = "/preview/index.html?id=" + bid.id;
             bidsContainer.appendChild(bidCard);
-
+        
             const bidTitle = document.createElement("div");
             bidTitle.classList.add("bidTitle", "col-sm");
             bidCard.appendChild(bidTitle);
             const bidTitleText = document.createElement("p");
             bidTitleText.innerHTML = bid.title;
+            if (bid.title.length > 50) {
+                bidTitleText.innerHTML = bid.title.slice(0, 50) + " " + "...";
+            }
             bidTitle.appendChild(bidTitleText);
-
+        
             const latestBid = document.createElement("div");
             latestBid.classList.add("latestBid", "col-sm");
             bidCard.appendChild(latestBid);
-
+        
             const latestBidText = document.createElement("p");
-            latestBidText.innerHTML = bid.bids[0].bidderName + ": " + "<br>";
+            latestBidText.innerHTML = sortedBids[0].bidderName + ": " + "<br>";
             const latestBidPrice = document.createElement("span");
-            latestBidPrice.innerHTML = bid.bids[0].amount + " credits";
+            latestBidPrice.innerHTML = sortedBids[0].amount + " credits";
             latestBidText.appendChild(latestBidPrice);
-
-            if(bid.bids[0].bidderName === username){
-                latestBidText.classList.add("myBid");
+        
+            if (sortedBids[0].bidderName === username) {
+                latestBidText.classList.add("text-light");
             } else {
                 latestBidText.classList.add("otherBid");
             }
             latestBid.appendChild(latestBidText);
-
+        
             const deadline = bid.endsAt;
             const deadlineDate = new Date(deadline);
             const deadlineDateFormatted = deadlineDate.toLocaleDateString("no-NO", {
@@ -112,18 +128,17 @@ export function createProfileCards(){
                 hour: "2-digit",
                 minute: "2-digit",
             });
-
+        
             const timeLeft = document.createElement("p");
             timeLeft.innerHTML = deadlineDateFormatted;
             timeLeft.classList.add("col-sm");
-            if(bid.endsAt === "Ended"){
+            if (bid.endsAt === "Ended") {
                 timeLeft.style.color = "red";
                 timeLeft.innerHTML = "Ended";
             }
             bidCard.appendChild(timeLeft);
-
-            
-        });
+        }); 
+         
 
 
 

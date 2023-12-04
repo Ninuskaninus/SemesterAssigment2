@@ -7,17 +7,14 @@ const accessToken = localStorage.getItem("token");
 
 export async function createCards(recentUploadsCard) {
   const listings = await getListings();
-  listings.sort((a, b) => new Date(b.updated) - new Date(a.updated));
-  
-  const searchResults = searchBar();
-  const selectedListing = searchResults > 0 ? searchResults : listings;
+  const sortedListings = listings
+  .filter(listing => listing.title && listing.title.toLowerCase() !== 'test')
+  .sort((a, b) => new Date(b.updated) - new Date(a.updated));
 
-  selectedListing.forEach((listing) => {
+  sortedListings.forEach((listing) => {
     createCards(recentUploadsCard, listing);
   }
   );
-
-  console.log(selectedListing);
 
   function createCards(recentUploadsCard, listing) {
     const deadline = new Date(listing.endsAt);

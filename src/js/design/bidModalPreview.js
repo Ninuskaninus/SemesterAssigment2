@@ -34,6 +34,9 @@ export function bidModalPreview(thisListing){
     const itemTitle = document.createElement("h1");
     itemTitle.innerHTML = listing.title + "<br>";
     itemTitle.id = "itemTitle";
+    if(listing.title.length > 50){
+        itemTitle.innerHTML = listing.title.slice(0, 50) + " " + "...";
+    }
     fullscreenForm.appendChild(itemTitle);
 
     const itemId = document.createElement("p");

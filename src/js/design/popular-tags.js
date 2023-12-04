@@ -87,7 +87,6 @@ export function popularTags() {
     return filteredListings;
   }
   
-  
 
   /**
    * Displays the filtered listings on the page.

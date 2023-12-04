@@ -42,13 +42,15 @@ export async function searchField() {
     const allListings = await getListings();
     searchResults.innerHTML = "";
     searchResults.style.display = "block";
+    const sellers = allListings.map((listing) => listing.seller.name);
 
-    // Check if the result is an array and if it's not empty
     if (Array.isArray(allListings)) {
       const searchResult = allListings.filter((listing) =>
       listing.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-      listing.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase()))
+      listing.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) 
     );
+
+
 
 
       searchResult.forEach((listing) => {

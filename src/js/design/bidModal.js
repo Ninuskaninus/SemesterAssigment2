@@ -1,5 +1,9 @@
 import { getListings } from "../API/GET/getListings.js";
 import { placeBid } from "../API/POST/bid.js";
+import {myProfile} from "../API/GET/getMyPofile.js";
+
+const myProfileData = await myProfile();
+const myCredits = myProfileData.credits;
 
 
 document.addEventListener("click", async (e) => {
@@ -101,7 +105,15 @@ document.addEventListener("click", async (e) => {
             itemBidHead.classList.add("text-danger");
             itemBidHead.innerHTML = "Bid must be higher than current price";
             modalContent.style.border = "2px solid red";
-        } else {
+        } 
+        if(itemBidInput.value > myCredits){
+            itemBidHead.classList.add("text-danger");
+            itemBidHead.innerHTML = "You don't have enough credits";
+            modalContent.style.border = "2px solid red";
+
+        }
+        
+        else {
             e.preventDefault();
             const bidAmount = itemBidInput.value;
             placeBid(selectedListing.id, bidAmount);

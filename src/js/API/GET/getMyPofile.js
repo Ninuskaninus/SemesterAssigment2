@@ -21,7 +21,10 @@ export async function myProfile() {
       listings: data._count,
       wins: data.wins,
       allListings: data.listings,
+      credits: data.credits,
     };
+
+
 
     return myProfileData;
   } catch (error) {
@@ -29,3 +32,5 @@ export async function myProfile() {
     throw error;
   }
 }
+
+

@@ -16,7 +16,6 @@ const tagValues = tagsArray.map(tag => tag.innerText.replace("\nx", '').trim());
 
 const mediaContainer = document.getElementById("imageUrlsContainer");
 const media = mediaContainer.getElementsByClassName("imagePreview");
-console.log(media);
 const mediaArray = Array.from(media);
 const mediaValues = mediaArray.map(media => {
     const backgroundImage = media.style.backgroundImage;
@@ -65,3 +64,4 @@ console.log(error.name + " " + error.message);
 }
     postListing(url, listingElement);
 }
+
