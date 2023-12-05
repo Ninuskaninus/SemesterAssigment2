@@ -42,11 +42,15 @@ const deadlineDateFormatted = deadlineDate.toLocaleDateString("no-NO", {
 
 export function previewListings() {
   const bidBtn = document.getElementById("bidOnThis");
+  if(username === thisListing?.seller?.name){
+    bidBtn.style.display = "none";
+  }
 
   bidBtn.addEventListener("click", () => {
     if (!accessToken) {
       errorLoginModal();
-    } else {
+    }
+    else {
       bidModalTrigger(thisListing);
     }
   });
@@ -96,6 +100,9 @@ export function previewListings() {
 
   const titleElement = document.getElementById("title");
   titleElement.innerHTML = thisListing.title;
+  if(thisListing.title.length > 50){
+    titleElement.innerHTML = thisListing.title.slice(0, 50) + " " + "...";
+  }
 
   const descriptionElement = document.getElementById("description");
   descriptionElement.innerHTML = thisListing.description;
@@ -133,7 +140,6 @@ export function previewListings() {
         }
       });
     } else {
-      // If there are no bids, show a message indicating that
       const noBidsMessage = document.createElement("div");
       noBidsMessage.classList.add("no-bids");
       bidListElement.appendChild(noBidsMessage);
@@ -143,13 +149,13 @@ export function previewListings() {
       noBidsMessage.appendChild(noBidsText);
     }
   } else {
-    // If the user is not logged in, show the login message
     const errorLoginBid = document.createElement("div");
     errorLoginBid.classList.add("not-logged-in");
     bidListElement.appendChild(errorLoginBid);
   
     const errorLoginBidText = document.createElement("p");
-    errorLoginBidText.innerHTML = "Log in to see bids";
+    errorLoginBidText.classList.add("p-2");
+    errorLoginBidText.innerHTML = "You have to be logged in to see the bids.";
     errorLoginBid.appendChild(errorLoginBidText);
   }
   

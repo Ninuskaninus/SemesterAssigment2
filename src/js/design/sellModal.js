@@ -55,6 +55,7 @@ export function sellModal(){
     title.type = "text";
     title.id = "sellTitle";
     title.placeholder = "Title";
+    title.required = true;
     title.classList.add("form-control");
     formFloat1.appendChild(title);
 
@@ -70,6 +71,7 @@ export function sellModal(){
     const description = document.createElement("textarea");
     description.id = "sellDescription";
     description.placeholder = "Description";
+    description.required = true;
     description.classList.add("form-control");
     formFloat2.appendChild(description);
 
@@ -148,6 +150,7 @@ const deadline = document.createElement("input");
 deadline.type = "datetime-local";
 deadline.id = "sellDeadline";
 deadline.placeholder = "Deadline";
+deadline.required = true;
 deadline.classList.add("form-control");
 
 formFloat4.appendChild(deadline);

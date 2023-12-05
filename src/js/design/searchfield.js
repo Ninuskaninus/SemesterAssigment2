@@ -42,16 +42,17 @@ export async function searchField() {
     const allListings = await getListings();
     searchResults.innerHTML = "";
     searchResults.style.display = "block";
+    const sellers = allListings.map((listing) => listing.seller.name);
 
-    // Check if the result is an array and if it's not empty
     if (Array.isArray(allListings)) {
       const searchResult = allListings.filter((listing) =>
-        listing.title.toLowerCase().includes(searchValue.toLowerCase())
-      );
+      listing.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      listing.tags.some((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) 
+    );
 
-      console.log("array: ", searchResult);
 
-      // Iterate over search results and create elements
+
+
       searchResult.forEach((listing) => {
         const searchResultItem = document.createElement("a");
         searchResultItem.classList.add("search-result-item");
@@ -69,7 +70,6 @@ export async function searchField() {
         searchResultItem.appendChild(searchResultTitle);
       });
 
-      // Check if there are no results
       if (searchResult.length === 0) {
         searchResults.innerHTML = "";
         const noResult = document.createElement("p");
@@ -77,7 +77,6 @@ export async function searchField() {
         searchResults.appendChild(noResult);
       }
     } else {
-      // Handle the case when allListings is not an array
       searchResults.innerHTML = "";
       const errorResult = document.createElement("p");
       errorResult.innerHTML = "Error retrieving results";

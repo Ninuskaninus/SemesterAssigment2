@@ -12093,7 +12093,7 @@ a {
 
 .item-card {
   width: 293px;
-  min-height: 240px;
+  min-height: 550px;
   position: relative;
   border-radius: 41px;
   background: #343434;
@@ -13094,6 +13094,9 @@ nav {
   .bid {
     flex-direction: column;
   }
+  #sellerEmail {
+    display: none;
+  }
 }
 .seller-info {
   margin-bottom: 50px;
@@ -13114,8 +13117,8 @@ nav {
 }
 
 .seller-avatar {
-  width: 50px;
-  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   background-color: aqua;
   margin-right: 20px;
@@ -13327,6 +13330,10 @@ p {
   margin-top: 10px;
   gap: 20px;
 }
+.mysales-content a {
+  text-decoration: none;
+  color: white;
+}
 
 .mysales-header {
   margin-bottom: 20px;
@@ -13461,6 +13468,15 @@ p {
   background-color: #343434;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 90px;
+}
+
+.inputError {
+  color: #F04D23;
+  border: 2px solid #F04D23;
+  background-color: aqua;
+}
+.inputError::placeholder {
+  color: #F04D23;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 const base_url = "https://api.noroff.dev/api/v1";
 const listings_url =
-  "/auction/listings?_bids=true&_seller=true&_tags=true&_active=true";
+  "/auction/listings?_bids=true&_seller=true&_tags=true&_active=true&sort=created&sortOrder=desc";
 const url = base_url + listings_url;
 
 /**
